@@ -5,7 +5,7 @@
   minPlayers: 0
   stations:
     Savannah:
-      stationProto: StandardNanotrasenStation
+      stationProto: CMStandardStation
       components:
         - type: StationNameSetup
           mapNameTemplate: 'USS LCS-14 Savannah'

@@ -1,0 +1,6 @@
+- type: entity
+  id: CMBaseStationAlertLevels
+  abstract: true
+  components:
+    - type: AlertLevel
+      alertLevelPrototype: stationAlerts

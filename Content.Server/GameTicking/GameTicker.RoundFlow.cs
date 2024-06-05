@@ -7,6 +7,7 @@ using Content.Server.Maps;
 using Content.Shared._CM14.Prototypes;
 using Content.Server.Voting.Managers;
 using Content.Shared.CCVar;
+using Content.Shared.Stories.SCCVars;
 using Content.Shared.Database;
 using Content.Shared.GameTicking;
 using Content.Shared.Mind;
@@ -17,6 +18,7 @@ using JetBrains.Annotations;
 using Prometheus;
 using Robust.Server.Maps;
 using Robust.Shared.Asynchronous;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Network;
@@ -118,6 +120,7 @@ namespace Content.Server.GameTicking
             {
                 throw new Exception("invalid config; couldn't select a valid station map!");
             }
+            maps.Add(_prototypeManager.Index<GameMapPrototype>("Savannah")); // Stories-LoadPlanetMap
 
             if (CurrentPreset?.MapPool != null &&
                 _prototypeManager.TryIndex<GameMapPoolPrototype>(CurrentPreset.MapPool, out var pool) &&
@@ -144,6 +147,12 @@ namespace Content.Server.GameTicking
                 }
 
                 LoadGameMap(map, toLoad, null);
+                // Stories-LoadPlanetMap-Start
+                if (maps[0] != map)
+                {
+                    _mapManager.DoMapInitialize(toLoad);
+                }
+                // Stories-LoadPlanetMap-End
             }
         }
 
