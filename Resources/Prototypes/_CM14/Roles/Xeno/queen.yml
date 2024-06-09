@@ -18,6 +18,7 @@
   joinNotifyCrew: false
   jobEntity: CMXenoQueen
   hidden: false
+  supervisors: nobody
 
 - type: entity
   parent: CMXenoSpawnPointJobBase
