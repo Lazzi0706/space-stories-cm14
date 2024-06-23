@@ -22348,13 +22348,6 @@ entities:
     - type: Transform
       pos: 28.470821,9.316593
       parent: 1
-- proto: CMPlushieYautja
-  entities:
-  - uid: 4134
-    components:
-    - type: Transform
-      pos: 82.4615,13.430628
-      parent: 1
 - proto: CMPortableSurgicalBedSpawnFolded
   entities:
   - uid: 3718
