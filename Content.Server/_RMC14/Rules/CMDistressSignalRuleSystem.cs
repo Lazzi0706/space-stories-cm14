@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.Linq;
+using System.Runtime.InteropServices;
 using Content.Server._RMC14.Dropship;
 using Content.Server._RMC14.Marines;
 using Content.Server.Administration.Components;
@@ -72,6 +73,7 @@ public sealed class CMDistressSignalRuleSystem : GameRuleSystem<CMDistressSignal
     [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly MapLoaderSystem _mapLoader = default!;
     [Dependency] private readonly IMapManager _mapManager = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly PlayTimeTrackingSystem _playTime = default!;
@@ -93,6 +95,7 @@ public sealed class CMDistressSignalRuleSystem : GameRuleSystem<CMDistressSignal
         CCVars.FTLCooldown,
     ];
 
+    private readonly List<MapId> _almayerMaps = [];
     private float _marinesPerXeno;
 
     public override void Initialize()
@@ -291,13 +294,16 @@ public sealed class CMDistressSignalRuleSystem : GameRuleSystem<CMDistressSignal
             // don't open shitcode inside
             spawnedDropships = true;
             var dropshipMap = _mapManager.CreateMap();
-            var dropshipPoints = EntityQueryEnumerator<DropshipDestinationComponent, MetaDataComponent>();
+            var dropshipPoints = EntityQueryEnumerator<DropshipDestinationComponent, MetaDataComponent, TransformComponent>();
             var ships = new[] { "/Maps/_RMC14/alamo.yml", "/Maps/_RMC14/normandy.yml" };
             var shipIndex = 0;
-            while (dropshipPoints.MoveNext(out var destinationId, out _, out var metaData))
+            while (dropshipPoints.MoveNext(out var destinationId, out _, out var metaData, out var destTransform))
             {
-                if (!metaData.EntityName.Contains("almayer", StringComparison.OrdinalIgnoreCase))
+                if (_mapSystem.TryGetMap(destTransform.MapID, out var destinationMapId) &&
+                    comp.XenoMap == destinationMapId)
+                {
                     continue;
+                }
 
                 _mapLoader.TryLoad(dropshipMap, ships[shipIndex], out var shipGrids);
                 shipIndex++;
@@ -480,53 +486,65 @@ public sealed class CMDistressSignalRuleSystem : GameRuleSystem<CMDistressSignal
 
             distress.NextCheck ??= Timing.CurTime + distress.CheckEvery;
 
+            var dropshipQuery = EntityQueryEnumerator<DropshipComponent>();
+            while (dropshipQuery.MoveNext(out var dropship))
+            {
+                if (dropship.Crashed)
+                    distress.Hijack = true;
+            }
+
+            var time = Timing.CurTime;
+            if (distress.Hijack)
+                distress.AbandonedAt ??= time + distress.AbandonedDelay;
+
+            _almayerMaps.Clear();
+            var almayerQuery = EntityQueryEnumerator<AlmayerComponent, TransformComponent>();
+            while (almayerQuery.MoveNext(out _, out var xform))
+            {
+                _almayerMaps.Add(xform.MapID);
+            }
+
             var xenosAlive = false;
             var xenos = EntityQueryEnumerator<ActorComponent, XenoComponent, MobStateComponent, TransformComponent>();
-            xenosCount = 0;
-            xenosAliveCount = 0;
-            var xenosOnShip = false;
             while (xenos.MoveNext(out var xenoId, out _, out var xeno, out var mobState, out var xform))
             {
                 xenosCount++;
                 if (!xeno.ContributesToVictory)
                     continue;
 
-                if (_mobState.IsAlive(xenoId, mobState))
+                if (_mobState.IsAlive(xenoId, mobState) &&
+                    (distress.AbandonedAt == null ||
+                     time < distress.AbandonedAt ||
+                     !distress.Hijack ||
+                     _almayerMaps.Contains(xform.MapID)))
                 {
                     xenosAlive = true;
-                    xenosAliveCount++;
                 }
 
-                if (HasComp<AlmayerComponent>(xform.GridUid))
-                    xenosOnShip = true;
+                if (xenosAlive)
+                    break;
             }
 
             var marines = EntityQueryEnumerator<ActorComponent, MarineComponent, MobStateComponent, TransformComponent>();
             var marinesAlive = false;
-            marinesCount = 0;
-            marinesAliveCount = 0;
-            var marinesOnShip = false;
             while (marines.MoveNext(out var marineId, out _, out _, out var mobState, out var xform))
             {
                 marinesCount++;
                 if (HasComp<VictimInfectedComponent>(marineId) || HasComp<VictimBurstComponent>(marineId))
                     continue;
 
-                if (_mobState.IsAlive(marineId, mobState))
+                if (_mobState.IsAlive(marineId, mobState) &&
+                    (distress.AbandonedAt == null ||
+                     time < distress.AbandonedAt ||
+                     !distress.Hijack ||
+                     _almayerMaps.Contains(xform.MapID)))
                 {
                     marinesAlive = true;
-                    marinesAliveCount++;
                 }
 
-                if (HasComp<AlmayerComponent>(xform.GridUid))
-                    marinesOnShip = true;
-
-                if (marinesAlive && marinesOnShip)
+                if (marinesAlive)
                     break;
             }
-
-            if (xenosOnShip)
-                distress.XenosEverOnShip = true;
 
             if (xenosAlive && !marinesAlive)
             {
@@ -538,7 +556,7 @@ public sealed class CMDistressSignalRuleSystem : GameRuleSystem<CMDistressSignal
             if (!xenosAlive && marinesAlive)
             {
                 // TODO RMC14 this should be when the dropship crashes, not if xenos ever boarded
-                if (distress.XenosEverOnShip)
+                if (distress.Hijack)
                 {
                     distress.Result = DistressSignalRuleResult.MinorXenoVictory;
                     _roundEnd.EndRound();

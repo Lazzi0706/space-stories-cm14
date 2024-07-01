@@ -127,7 +127,7 @@ public sealed class DropshipSystem : SharedDropshipSystem
             _audio.PlayPvs(dropship.LocalHijackSound, shuttle.Value);
 
             var marineText = "Обнаружен незапланированный вылет шаттла из оперативной зоны. Вероятен захват. Отключаю автопилот.";
-            _marineAnnounce.Announce(shuttle.Value, marineText, dropship.AnnounceHijackIn);
+            _marineAnnounce.AnnounceRadio(shuttle.Value, marineText, dropship.AnnounceHijackIn);
 
             var marines = Filter.Empty().AddWhereAttachedEntity(e => !HasComp<XenoComponent>(e));
             _audio.PlayGlobal(dropship.MarineHijackSound, marines, true);
