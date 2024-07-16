@@ -37,7 +37,7 @@
     #  points: 20
     #- id: CMM40MFHSMetalFoamGrenade
     #  points: 5
-    - name: Primary Ammunition
+    - name: Основные боеприпасы
       entries:
       - id: CMMagazineRifleM4SPRAP
         points: 10
@@ -49,7 +49,7 @@
         points: 10
       - id: CMMagazineRifleM54CExt
         points: 10
-    - name: Sidearm Ammunition
+    - name: Боеприпасы к оружию
       entries:
       - id: CMMagazinePistolMK80
         points: 5
@@ -69,7 +69,7 @@
     #  points: 30
     - name: Броня
       entries:
-      - id: CMArmorB12
+      - id: CMVendorBundleArmorB12
         points: 30
     - name: Предметы одежды
       entries:
@@ -151,7 +151,7 @@
       takeAll: CMStandard
       entries:
       - id: CMVendorBundleRiflemanApparel
-      - id: CMArmorM4
+      - id: CMVendorBundleArmorM4
       - id: CMMRE
       #- id: CMMap # TODO: Make a map
     #- id: CMEssentialFireteamLeaderUtilities

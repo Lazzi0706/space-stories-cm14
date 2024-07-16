@@ -73,7 +73,7 @@
     #  points: 18
     #- id: CMM40MFHSMetalFoamGrenade
     #  points: 5
-    - name: Ammunition
+    - name: Боеприпасы
       entries:
       - id: CMMagazineRifleM4SPRAP
         points: 6
@@ -87,11 +87,11 @@
         points: 6
     - name: Броня
       entries:
-      - id: CMArmorB12
+      - id: CMVendorBundleArmorB12
         points: 24
-      - id: CMArmorM4
+      - id: CMVendorBundleArmorM4
         points: 30
-    - name: Restricted Firearms
+    - name: Огнестрельное оружие ограниченного поражения
       entries:
       - id: CMWeaponPistolMK80
         points: 8
@@ -183,12 +183,13 @@
     - name: Броня
       choices: { CMArmor: 1 }
       entries:
-      - id: CMArmorM3Light
-        name: light armor
-      - id: CMArmorM3Medium
-        name: medium armor
-      - id: CMArmorM3Heavy
-        name: heavy armor
+      - id: CMVendorBundleArmorM3Light
+        name: лёгкая броня
+      - id: CMVendorBundleArmorM3Medium
+        name: средняя броня
+      - id: CMVendorBundleArmorM3Heavy
+        name: тяжёлая броня
+        recommended: true
     - name: Рюкзак
       entries:
     #- id: CMScabbardMacheteFull

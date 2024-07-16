@@ -132,9 +132,9 @@
 #        amount: 15
 #      - id: M3 Pattern Smooth Marine Armor
 #        amount: 15
-      - id: CMArmorM3Heavy
+      - id: CMVendorBundleArmorM3Heavy
         amount: 10
-      - id: CMArmorM3Light
+      - id: CMVendorBundleArmorM3Light
         amount: 10
     - name: Рюкзак
       entries:

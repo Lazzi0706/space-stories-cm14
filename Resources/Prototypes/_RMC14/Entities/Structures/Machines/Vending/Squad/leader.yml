@@ -42,7 +42,7 @@
     #  points: 0
     - name: Броня
       entries:
-      - id: CMArmorM4
+      - id: CMVendorBundleArmorM4
         points: 16
     - name: Предметы одежды
       entries:
@@ -214,7 +214,7 @@
       takeAll: CMStandard
       entries:
       - id: CMVendorBundleSquadLeaderApparel
-      - id: CMArmorB12
+      - id: CMVendorBundleArmorB12
       - id: CMMRE
       #- id: CMMap # TODO: Make a map
     - name: Рюкзак

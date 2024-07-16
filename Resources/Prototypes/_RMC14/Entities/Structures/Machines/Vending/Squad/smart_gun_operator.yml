@@ -15,17 +15,17 @@
     jobs:
     - CMSmartGunOperator
     sections:
-    - name: Smart Gun Set (Mandatory)
+    - name: Набор умного оружия (обязательно)
       takeAll: CMSmartGunSet
       entries:
       - id: CMSmartGunOperatorEquipmentCase
-    - name: Gun Attachments
+    - name: Обвесы
       choices: { CMGunAttachments: 1 }
       entries:
 #      - id: RMCAttachmentLaserSight # TODO RMC14 when other pistols are available here
       - id: RMCAttachmentS5RedDotSight
       - id: RMCAttachmentS6ReflexSight
-    - name: Explosives
+    - name: Взрывчатка
       entries:
       - id: CMPacketGrenadeHighExplosiveFilled
         points: 30
@@ -45,15 +45,15 @@
     #  points: 20
     #- id: CMM20MineBox4
     #  points: 20
-    - name: Sidearm Ammunitions
+    - name: Боеприпасы к оружию
       entries:
       - id: CMMagazinePistolMK80
         points: 5
-    - name: Restricted Firearms
+    - name: Огнестрельное оружие ограниченного поражения
       entries:
       - id: CMWeaponPistolMK80
         points: 15
-    - name: Clothing Items
+    - name: Предметы одежды
       entries:
     #- id: CMScabbardMacheteFull
     #  points: 6
@@ -73,7 +73,7 @@
     #  points: 5
       - id: RMCPowerCellSmartgun
         points: 15
-    - name: Binoculars
+    - name: Бинокли
       entries: [ ]
     #- id: CMBinoculars
     #  points: 5
@@ -125,25 +125,25 @@
       - id: CMVendorBundleRiflemanApparel
       - id: CMMRE
       #- id: CMMap # TODO: Make a map
-    - name: Belt
+    - name: Пояса
       choices: { CMBelt: 1 }
       entries:
      #- id: CMM802SmartGunOperatorSidearmBeltFilled
       - id: CMBeltSmartGunOperatorFilled
-    - name: Pouches
+    - name: Подсумки
       choices: { CMPouch: 2 }
       entries:
       - id: CMPouchFlareFilled
-        name: Flare pouch (Filled)
+        name: подсумок фаеров (заполненный)
 #      - id: CMPouchElectronics # TODO RMC14
       - id: CMPouchFirstAidInjectors
-        name: first-aid pouch (refillable injectors)
+        name: подсумок первой помощи (многоразовые инъекторы)
         recommended: true
       - id: CMPouchFirstAidSplintsGauzeOintment
-        name: first-aid pouch (gauze, ointment) # TODO RMC14 splints comma
+        name: подсумок первой помощи (марля, мазь) # TODO RMC14 splints comma
         recommended: true
       - id: CMPouchFirstAidPills
-        name: first-aid pouch (pills)
+        name: подсумок первой помощи (таблетки)
         recommended: true
       - id: CMPouchMagazinePistolLarge
         recommended: true

@@ -169,7 +169,6 @@
     bundle:
     - CMVendorArmorM3Light
 
-
 - type: entity
   id: CMVendorBundleArmorM3T
   name: light armor
@@ -192,7 +191,6 @@
     bundle:
     - CMVendorArmorM3Heavy
 
-
 - type: entity
   id: CMVendorBundleArmorB12
   name: medium armor
@@ -203,7 +201,6 @@
   - type: CMVendorBundle
     bundle:
     - CMVendorArmorB12
-
 
 - type: entity
   id: CMVendorBundleArmorM4

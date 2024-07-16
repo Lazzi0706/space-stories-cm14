@@ -667,11 +667,11 @@
       - state: color
         color: "#4148C888"
 
-# M56
+# SmartGun
 
 - type: entity
-  parent: CMArmorM56CombatHarness
-  id: CMArmorM56CombatHarnessAlpha
+  parent: CMArmorSmartGunCombatHarness
+  id: CMArmorSmartGunCombatHarnessAlpha
   components:
   - type: Clothing
     clothingVisuals:
@@ -681,8 +681,8 @@
         color: "#E6191988"
 
 - type: entity
-  parent: CMArmorM56CombatHarness
-  id: CMArmorM56CombatHarnessBravo
+  parent: CMArmorSmartGunCombatHarness
+  id: CMArmorSmartGunCombatHarnessBravo
   components:
   - type: Clothing
     clothingVisuals:
@@ -692,8 +692,8 @@
         color: "#FFC32D88"
 
 - type: entity
-  parent: CMArmorM56CombatHarness
-  id: CMArmorM56CombatHarnessCharlie
+  parent: CMArmorSmartGunCombatHarness
+  id: CMArmorSmartGunCombatHarnessCharlie
   components:
   - type: Clothing
     clothingVisuals:
@@ -703,8 +703,8 @@
         color: "#C864C888"
 
 - type: entity
-  parent: CMArmorM56CombatHarness
-  id: CMArmorM56CombatHarnessDelta
+  parent: CMArmorSmartGunCombatHarness
+  id: CMArmorSmartGunCombatHarnessDelta
   components:
   - type: Clothing
     clothingVisuals:
