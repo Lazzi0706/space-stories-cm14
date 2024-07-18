@@ -8,6 +8,7 @@
     - !type:DepartmentTimeRequirement
       department: CMSquad
       time: 3600 # 1 hours
+      inverted: true
   startingGear: CMGearCadet
   icon: "CMJobIconEmpty"
   joinNotifyCrew: false
