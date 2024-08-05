@@ -1,13 +1,14 @@
 - type: entity
-  id: CMEffectShield
+  id: RMCEffectEmpowerBrown
   noSpawn: true
   components:
   - type: TimedDespawn
-    lifetime: 3.2
+    lifetime: 2
   - type: Sprite
     sprite: _RMC14/Effects/xeno_empower.rsi
     noRot: true
     state: empower
+    color: "#574990"
     drawdepth: Effects
   - type: EffectVisuals
   - type: Tag

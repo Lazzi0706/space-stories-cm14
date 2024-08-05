@@ -55,29 +55,29 @@
       #    CMM276ShotgunShellLoadingRig #TODO: Make this
       - id: CMBeltUtility
       - id: RMCBeltGrenade
-    - name: Подсумки
-      choices: { CMPouch: 2 }
+    - name: Pouches
+      choices: { RMCPouch: 2 }
       entries:
-      - id: CMPouchBayonetFill
-      - id: CMPouchFirstAidInjectors
-        name: подсумок первой помощи (многоразовые инъекторы)
+      - id: RMCPouchBayonetFill
+      - id: RMCPouchFirstAidInjectors
+        name: first-aid pouch (refillable injectors)
         recommended: true
-      - id: CMPouchFirstAidSplintsGauzeOintment
-        name: подсумок первой помощи (марля, мазь) # TODO RMC14 splints comma
+      - id: RMCPouchFirstAidSplintsGauzeOintment
+        name: first-aid pouch (gauze, ointment) # TODO RMC14 splints comma
         recommended: true
-      - id: CMPouchFirstAidPills
-        name: подсумок первой помощи (таблетки)
+      - id: RMCPouchFirstAidPills
+        name: first-aid pouch (pills)
         recommended: true
-      - id: CMPouchFlareFilled
-        name: подсумок фаеров (заполненный)
+      - id: RMCPouchFlareFilled
+        name: Flare pouch (Full)
         recommended: true
       #    CMSmallDocumentPouch #TODO: Make this
-      - id: CMPouchMagazine
-      - id: CMPouchShotgun
-      - id: CMPouchGeneral
-      - id: CMPouchMagazinePistol
-      - id: CMPouchPistol
-    - name: Маски
+      - id: RMCPouchMagazine
+      - id: RMCPouchShotgun
+      - id: RMCPouchGeneral
+      - id: RMCPouchMagazinePistol
+      - id: RMCPouchPistol
+    - name: Mask
       choices: { CMMask: 1 }
       entries:
       - id: CMMaskGas
@@ -87,7 +87,8 @@
       entries:
       - id: CMEntrenchingTool
         points: 5
-      - id: CMSandbagEmpty50
+      - id: CMSandbagEmpty25
+        name: sandbags x25
         points: 20
 #      - id: ES-11 Mobile Fuel Canister
 #        points: 5
@@ -135,8 +136,8 @@
         points: 10
     - name: Sidearm Ammunition
       entries:
-#      - id: CMM44HeavySpeedLoader
-#        points: 10
+      - id: RMCSpeedLoader44Marksman
+        points: 10
       - id: CMMagazinePistolMK80
         points: 5
       - id: RMCMagazinePistolSU6
@@ -161,7 +162,7 @@
     #  points: 15
     #- id: CMScabbardMacheteFull
     #  points: 15
-      - id: CMPouchMacheteFilled
+      - id: RMCPouchMacheteFilled
         points: 15
     #- id: CMMarineRadioTelephonePack
     #  points: 15
@@ -171,7 +172,7 @@
     #  points: 5
     #- id: CMSlingPouch
     #  points: 15
-      - id: CMPouchGeneralLarge
+      - id: RMCPouchGeneralLarge
         points: 15
     - name: Утилиты
       entries:
@@ -188,7 +189,9 @@
       - id: RMCWhistle
         points: 5
     - name: Бинокли
-      entries: [ ]
+      entries:
+      - id: RMCBinoculars
+        points: 5
     #- id: CMRangeFinder
     #  points: 10
     #- id: CMLaserDesignator
@@ -208,14 +211,10 @@
     - name: Радиоключи
       entries:
       - id: CMEncryptionKeyEngineer
-        amount: 5
         points: 5
       - id: CMEncryptionKeyIntel
-        amount: 5
         points: 5
       - id: CMEncryptionKeyJTAC
-        amount: 5
         points: 5
       - id: CMEncryptionKeyRequisition
-        amount: 5
         points: 5

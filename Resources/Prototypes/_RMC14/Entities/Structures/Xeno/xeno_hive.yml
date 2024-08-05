@@ -63,6 +63,8 @@
     spawn: HiveCoreXeno
   - type: HiveConstructionUnique
     id: HiveCoreXeno
+  - type: WarpPoint
+    location: hive core
 
 - type: entity
   id: HiveClusterXeno

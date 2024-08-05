@@ -36,8 +36,8 @@
     id: CMIDCardOrdnanceTech
     ears: CMHeadsetEngineer
     belt: CMBeltUtilityFilled
-#    pocket1: CMDemolitionsScanner TODO CM14
-    pocket2: CMPouchGeneralMedium
+#    pocket1: CMDemolitionsScanner TODO RMC14
+    pocket2: RMCPouchGeneralMedium
 
 - type: entity
   parent: CMSpawnPointJobBase

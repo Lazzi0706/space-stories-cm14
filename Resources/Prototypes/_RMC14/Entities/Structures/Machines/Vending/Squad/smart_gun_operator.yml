@@ -63,7 +63,7 @@
     #  points: 6
     #- id: CMFuelTankStrapPouch
     #  points: 5
-      - id: CMPouchGeneralLarge
+      - id: RMCPouchGeneralLarge
         points: 6
     - name: Утилиты
       entries:
@@ -135,27 +135,27 @@
      #- id: CMM802SmartGunOperatorSidearmBeltFilled
       - id: CMBeltSmartGunOperatorFilled
     - name: Подсумки
-      choices: { CMPouch: 2 }
+      choices: { RMCPouch: 2 }
       entries:
-      - id: CMPouchFlareFilled
+      - id: RMCPouchFlareFilled
         name: подсумок фаеров (заполненный)
-#      - id: CMPouchElectronics # TODO RMC14
-      - id: CMPouchFirstAidInjectors
+#      - id: RMCPouchElectronics # TODO RMC14
+      - id: RMCPouchFirstAidInjectors
         name: подсумок первой помощи (многоразовые инъекторы)
         recommended: true
-      - id: CMPouchFirstAidSplintsGauzeOintment
+      - id: RMCPouchFirstAidSplintsGauzeOintment
         name: подсумок первой помощи (марля, мазь) # TODO RMC14 splints comma
         recommended: true
-      - id: CMPouchFirstAidPills
+      - id: RMCPouchFirstAidPills
         name: подсумок первой помощи (таблетки)
         recommended: true
-      - id: CMPouchMagazinePistolLarge
+      - id: RMCPouchMagazinePistolLarge
         recommended: true
-      - id: CMPouchMagazine
-      - id: CMPouchShotgun
-      - id: CMPouchGeneralMedium
-      - id: CMPouchPistol
-      - id: CMPouchMacheteFilled
+      - id: RMCPouchMagazine
+      - id: RMCPouchShotgun
+      - id: RMCPouchGeneralMedium
+      - id: RMCPouchPistol
+      - id: RMCPouchMacheteFilled
     #- id: CMSlingPouch
     - name: Аксессуары
       choices: { CMAccessories: 1 }

@@ -46,7 +46,7 @@
   equipment:
     jumpsuit: CMJumpsuitBO
     back: CMSatchel
-    shoes: CMShoesLaceup
+    shoes: RMCShoesLaceup
     head: CMHeadCap
     outerClothing: CMCoatOfficer
     id: CMIDCardExecutiveOfficer
