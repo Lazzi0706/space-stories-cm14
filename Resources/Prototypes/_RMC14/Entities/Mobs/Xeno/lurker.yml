@@ -59,6 +59,8 @@
   - type: XenoTurnInvisible
     opacity: 0.01
   - type: XenoCripplingStrike
+  - type: XenoMeleeSlow
+    requiresKnockDown: true
   - type: MeleeWeapon
     attackRate: 0.75
     damage:
