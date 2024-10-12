@@ -17,7 +17,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: grid
+      name: Escape Pod
     - type: Transform
       pos: -0.515625,-0.5625
       parent: invalid
@@ -55,6 +55,8 @@ entities:
     - type: Gravity
       gravityShakeSound: !type:SoundPathSpecifier
         path: /Audio/Effects/alert.ogg
+      inherent: True
+      enabled: True
     - type: DecalGrid
       chunkCollection:
         version: 2
@@ -103,6 +105,11 @@ entities:
     - type: Transform
       pos: 0.5,2.5
       parent: 1
+    - type: ApcPowerReceiver
+      powerLoad: 0
+      needsPower: False
+    missingComponents:
+    - RMCPowerReceiver
 - proto: RMCEscapePodController
   entities:
   - uid: 18
