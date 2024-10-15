@@ -1,2 +1,2 @@
-ent-RMCBoxHandcuffs = Коробка с наручниками
+ent-RMCBoxHandcuffs = коробка с наручниками
     .desc = Коробка, полная наручников

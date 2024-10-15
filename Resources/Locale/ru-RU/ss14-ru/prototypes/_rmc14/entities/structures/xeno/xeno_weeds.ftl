@@ -8,3 +8,7 @@ ent-XenoHiveWeedsSource = ульевый смоляной узел
     .desc = { ent-XenoHiveWeeds.desc }
 ent-XenoWeedsWall = смола
     .desc = { "" }
+ent-XenoHardyWeeds = { ent-XenoWeeds }
+    .desc = { ent-XenoWeeds.desc }
+ent-XenoHardyWeedsSource = узел сорняков
+    .desc = { ent-XenoHardyWeeds.desc }

@@ -23,3 +23,5 @@ ent-RMCSpawnerCorpseColonist = Спаунер трупов - Колонист
 ent-RMCSpawnerCorpseColonistBust = Спаунер трупов - Колонист
     .suffix = RMC14, Разорваный
     .desc = { ent-RMCSpawnerCorpseColonist.desc }
+ent-RMCSpawnerCorpseWeYaGoon = труп-спавнер "Вестон-Ямада"
+    .desc = { ent-RMCSpawnerCorpse.desc }

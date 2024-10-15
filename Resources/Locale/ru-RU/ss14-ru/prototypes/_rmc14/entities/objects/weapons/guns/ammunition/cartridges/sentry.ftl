@@ -1,6 +1,4 @@
-ent-CMCartridgeSentry10x50mm = патрон (10x50mm)
+ent-CMCartridgeSentry10x50mm = пуля (10x50 мм)
     .desc = { ent-CMBaseCartridgeRifle.desc }
-ent-RMCCartridgeSentry = патрон (10x28mm)
-    .desc = { ent-CMBaseCartridgeRifle.desc }
-ent-CMCartridgeSentry10x28mm = патрон (10x28мм)
+ent-RMCCartridgeSentry = пуля (10x28 мм)
     .desc = { ent-CMBaseCartridgeRifle.desc }

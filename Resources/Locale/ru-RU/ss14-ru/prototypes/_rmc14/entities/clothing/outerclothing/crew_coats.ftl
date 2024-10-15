@@ -1,0 +1,16 @@
+ent-RMCCoatCorrespondent = куртка военного корреспондента
+    .desc = Куртка для самых модных военных корреспондентов.
+ent-RMCCoatCorrespondentGreen = { ent-RMCCoatCorrespondent }
+    .desc = { ent-RMCCoatCorrespondent.desc }
+ent-RMCCoatCorrespondentBlack = { ent-RMCCoatCorrespondent }
+    .desc = { ent-RMCCoatCorrespondent.desc }
+ent-RMCCoatCorrespondentBlue = { ent-RMCCoatCorrespondent }
+    .desc = { ent-RMCCoatCorrespondent.desc }
+ent-RMCHazardVest = оранжевый жилет с высокой видимость
+    .desc = Оранжевый жилет с высокой видимость, используемый на участках работ.
+ent-RMCHazardVestBlue = синий жилет с высокой видимость
+    .desc = Синий жилет с высокой видимость, используемый на участках работ.
+ent-RMCHazardVestYellow = желтый жилет с высокой видимость
+    .desc = Желтый жилет с высокой видимость, используемый на участках работ.
+ent-RMCHazardVestBlack = черный жилет с высокой видимость
+    .desc = Черный жилет с высокой видимость, предполагается для использования на рабочих участках.  Имеет дополнительные светоотражающие ленты.  На жилете указано, что он полностью соответствует всем стандартам безопасности труда ООН.

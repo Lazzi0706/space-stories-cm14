@@ -1,6 +1,9 @@
 ent-RMCCableCoil = катушка кабеля
     .desc = Катушка силового кабеля.
     .suffix = Полный
+ent-RMCCableCoil30 = { ent-RMCCableCoil }
+    .suffix = 30
+    .desc = { ent-RMCCableCoil.desc }
 ent-RMCCableCoil20 = { ent-RMCCableCoil }
     .suffix = 20
     .desc = { ent-RMCCableCoil.desc }

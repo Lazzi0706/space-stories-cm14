@@ -13,12 +13,12 @@ rmc-sentry-rotate-with-screwdriver = Его можно поворачивать 
 rmc-sentry-too-close = Это слишком близко к { INDEFINITE($defense) } { $defense }!
 rmc-sentry-active-norot = { CAPITALIZE(THE($sentry)) } в настоящее время активен. Моторы не позволят вам безопасно вращать его.
 rmc-sentry-item-norot = Вы не можете вращать его так!
-rmc-sentry-magazine-does-not-fit = { CAPITALIZE(THE($magazine)) } не вписывается в { THE($sentry)}!
+rmc-sentry-magazine-does-not-fit = { CAPITALIZE(THE($magazine)) } не вписывается в { THE($sentry) }!
 rmc-sentry-upgrade-not-item = Перед обновлением необходимо разобрать { THE($sentry) } с помощью мультиинструмента!
 rmc-sentry-upgrade-not-holding = Чтобы обновить { THE($sentry) }, вам нужно держать в активной руке набор для обновления!
 rmc-sentry-upgrade-not-upgradeable = Вы не можете обновить { THE($sentry) }!
 rmc-sentry-spikes-self = Стальные клыки турели вонзаются в вас!
-rmc-sentry-spikes-others = Стальные клыки турели вонзаются в {$target}!
+rmc-sentry-spikes-others = Стальные клыки турели вонзаются в { $target }!
 rmc-sentry-rotate-self = Вы поворачиваете { THE($sentry) }.
 rmc-sentry-rotate-others = { $user } вращает { THE($sentry) }.
 rmc-sentry-disassemble-start-self = Вы начинаете разбирать { THE($sentry) }.
@@ -47,3 +47,5 @@ health-examinable-sentry-Shock-10 = [color=yellow]{ CAPITALIZE(SUBJECT($target))
 health-examinable-sentry-Shock-25 = [color=orange]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-BE($target) } слегка поджаренный.[/color]
 health-examinable-sentry-Shock-50 = [color=red]{ CAPITALIZE(SUBJECT($target)) } { CONJUGATE-BE($target) } пускает искры![/color]
 health-examinable-sentry-Shock-75 = [color=crimson]{ CAPITALIZE(SUBJECT($target)) } едва может функционировать![/color]
+rmc-sentry-not-emergency = { CAPITALIZE(THE($deployer)) } можно активировать только в чрезвычайных ситуациях.
+rmc-sentry-deploy = Вы развертываете { THE($spawned) }

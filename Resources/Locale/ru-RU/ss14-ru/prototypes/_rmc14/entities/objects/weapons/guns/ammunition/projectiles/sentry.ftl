@@ -1,6 +1,4 @@
-ent-CMBulletSentry10x50mm = пуля (10x50мм)
+ent-CMBulletSentry10x50mm = пуля (10x50 мм)
     .desc = { ent-BaseBullet.desc }
-ent-RMCBulletSentry = пуля (10x28мм)
-    .desc = { ent-BaseBullet.desc }
-ent-CMBulletSentry10x28mm = пуля (10x28мм)
+ent-RMCBulletSentry = пуля (10x28 мм)
     .desc = { ent-BaseBullet.desc }

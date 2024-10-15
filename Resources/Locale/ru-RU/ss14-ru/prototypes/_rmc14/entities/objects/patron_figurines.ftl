@@ -98,3 +98,19 @@ ent-RMCFigurinePatronDartingSleepyGroth = Darting 'Sleepy' Groth figurine
     .desc = "Is it naptime yet..?"
 ent-RMCFigurinePatronSamAli = Sam Ali figurine
     .desc = Heavily wounded dwarf.
+ent-RMCFigurinePatronWalks-The-Graves = Walks-The-Graves figurine
+    .desc = { ent-RMCBaseFigurinePatron.desc }
+ent-RMCFigurinePatronHonkzeeBeezs = Honkzee Beezs figurine
+    .desc =
+        "Wowies, marines eated more crayons than honkzee!"
+        This figurine is horrifically unbalanced.
+ent-RMCFigurinePatronVellaMorticianSakeao = Vella 'Mortician' Sakeao figurine
+    .desc = Detachable SMG arm not included*
+ent-RMCFigurinePatronSeeks-to-Fight = Seeks-to-Fight figurine
+    .desc = Navy is just the taxi service for the Marines.
+ent-RMCFigurinePatronStares-at-Stars = Stares-at-Stars figurine
+    .desc = Smells of citrus.
+ent-RMCFigurinePatronRhettRainmanMcIndrick = Rhett 'Rainman' McIndrick figurine
+    .desc = Former Scout Sergeant McIndrick. "Where's the glory in waiting?"
+ent-RMCFigurinePatronDoes-The-Dishes = Does-The-Dishes figurine
+    .desc = "Anybody want a sssmoke?"

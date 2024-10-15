@@ -1,4 +1,6 @@
 rmc-xeno-words-of-the-queen-header = Слова королевы звучат в нашей голове...
+xeno-ui-reserve-parasites-title = Резерв Лицехватов
+xeno-ui-reserve-parasites-apply-button-text = Применить
 cm-ui-cm-actions = Действия СМ
 cm-ui-transform-tab = Трансформация
 cm-ui-xeno-tab = Ксено

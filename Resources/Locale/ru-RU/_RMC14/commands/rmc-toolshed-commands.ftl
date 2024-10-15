@@ -20,6 +20,7 @@ command-description-hive-alldefault = Устанавливает улей ксе
 command-description-marine-randomize = Удаляет, а затем порождает на том же месте морского пехотинца или группу морских пехотинцев с рандомизированным именем, видом и внешностью.
 command-description-marine-randomizewithjob = Удаляет, а затем порождает морпеха или группу морпехов в том же месте с заданным заданием и рандомизированным именем, видом и внешностью.
 command-description-removeinvalidweeds = Удаляет с карты все сорняки, которые не должны были нормально распространиться.
+command-description-prototypecontains = Фильтрует сущности по тому, содержит ли их ID прототипа заданный текст.
 command-description-skills-get = Получает уровень определенного навыка для морпеха.
 command-description-skills-set = Устанавливает уровень определенного навыка для морпеха или группы морпехов.
 command-description-skills-all = Устанавливает уровень всех навыков для морпеха или группы морпехов.

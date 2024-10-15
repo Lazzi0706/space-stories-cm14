@@ -1,0 +1,12 @@
+ent-StoriesArmorHelmetM10MPKilla0 = { ent-ArmorHelmetM10 }
+    .desc = { ent-ArmorHelmetM10.desc }
+ent-StoriesArmorHelmetM10MPKilla1 = { ent-ArmorHelmetM10 }
+    .desc = { ent-ArmorHelmetM10.desc }
+ent-StoriesArmorHelmetM10MPKilla2 = { ent-ArmorHelmetM10 }
+    .desc = { ent-ArmorHelmetM10.desc }
+ent-StoriesArmorM3MediumKilla = { ent-CMArmorM3Medium }
+    .desc = { ent-CMArmorM3Medium.desc }
+ent-StoriesJumpsuitMarineFormalKilla0 = { ent-CMJumpsuitMarineFormal }
+    .desc = { ent-CMJumpsuitMarineFormal.desc }
+ent-StoriesJumpsuitMarineFormalKilla1 = { ent-CMJumpsuitMarineFormal }
+    .desc = { ent-CMJumpsuitMarineFormal.desc }

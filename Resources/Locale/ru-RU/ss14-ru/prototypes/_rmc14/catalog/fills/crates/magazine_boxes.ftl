@@ -36,3 +36,5 @@ ent-RMCCrateBoxMagazineM44RevolverMarksman = коробка спидлоадер
     .desc = { ent-RMCCrateAmmo.desc }
 ent-RMCCrateBoxMagazineSentry = UA 571-C боеприпасы турели (x2)
     .desc = { ent-RMCCrateAmmo.desc }
+ent-RMCCrateBoxMagazineSentryShotgun = UN 12-G боеприпасы дробной туррели (x2)
+    .desc = { ent-RMCCrateAmmo.desc }

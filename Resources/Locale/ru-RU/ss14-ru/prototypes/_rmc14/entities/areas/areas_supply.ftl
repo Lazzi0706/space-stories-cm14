@@ -1,10 +1,10 @@
 ent-RMCAreaSupply = { ent-RMCAreaProtectionMetal }
     .desc = { ent-RMCAreaProtectionMetal.desc }
-ent-RMCAreaSupplyStation = Supply Shuttle
+ent-RMCAreaSupplyStation = Шаттл со снабжением
     .desc = { ent-RMCAreaSupply.desc }
-ent-RMCAreaSupplyDock = Supply Shuttle
+ent-RMCAreaSupplyDock = Причал снабжения
     .desc = { ent-RMCAreaSupply.desc }
-ent-RMCAreaSupplyStationVehicle = Vehicle ASRS
+ent-RMCAreaSupplyStationVehicle = Транспорт ASRS
     .desc = { ent-RMCAreaSupply.desc }
-ent-RMCAreaSupplyDockVehicle = Vehicle ASRS
+ent-RMCAreaSupplyDockVehicle = Транспорт ASRS
     .desc = { ent-RMCAreaSupply.desc }

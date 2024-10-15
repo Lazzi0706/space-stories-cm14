@@ -8,6 +8,7 @@ ent-CMWallReinforced = усиленная стена
     .desc = Огромный кусок армированного металла, используемый для разделения комнат.
 ent-CMWallSuperReinforced = { ent-CMWallReinforced }
     .desc = { ent-CMWallReinforced.desc }
+    .suffix = Супер усиленный
 ent-CMWallReinforcedAlmayer = { ent-CMWallReinforced }
     .desc = { ent-CMWallReinforced.desc }
 ent-CMWallReinforcedAlmayerWhite = { ent-CMWallReinforced }

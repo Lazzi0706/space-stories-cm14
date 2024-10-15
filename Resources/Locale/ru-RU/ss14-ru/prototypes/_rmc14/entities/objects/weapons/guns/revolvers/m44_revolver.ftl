@@ -1,0 +1,16 @@
+ent-RMCWeaponRevolverM44 = боевой револьвер M44
+    .desc = Крупнокалиберный револьвер, который иногда используется штурмовыми отрядами и офицерами морской пехоты, а также гражданскими правоохранительными органами. Стреляет патронами .44 Magnum.
+ent-RMCBaseSpeedLoader44 = спидлодер M44 (.44)
+    .desc = { ent-BaseItem.desc }
+ent-RMCSpeedLoaderM44 = спидлодер M44 (.44)
+    .desc = Скорострельный магазин для револьвера.
+ent-RMCSpeedLoader44Marksman = спидлодер M44 снайперский (.44)
+    .desc = Скорострельный магазин для револьвера, заполненный патронами для снайперской стрельбы.
+ent-RMCCartridgeRevolver44 = патрон (.44)
+    .desc = { ent-CMCartridgePistolBase.desc }
+ent-RMCCartridgeRevolver44Marksman = патрон (.44 снайперский)
+    .desc = { ent-CMCartridgePistolBase.desc }
+ent-CMBulletRevolver44 = пуля (.44)
+    .desc = { ent-CMBulletBase.desc }
+ent-RMCBulletRevolver44Marksman = пуля (.44 снайперская)
+    .desc = { ent-CMBulletBase.desc }
