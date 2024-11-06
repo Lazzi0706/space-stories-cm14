@@ -87,6 +87,7 @@
           - CMMagazineRifleM4SPRExt
           - RMCMagazineRifleM4SPRA19
           - RMCMagazineRifleM4SPRA19Impact
+          - RMCCartridgeRifleM4SPRA19Incendiary
   - type: Construction
     graph: RifleM4SPRCustomConstruct
     node: start
