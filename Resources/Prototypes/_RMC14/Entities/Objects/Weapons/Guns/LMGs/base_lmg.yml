@@ -63,6 +63,9 @@
   - type: Appearance
   - type: RMCNameItemOnVend
     item: PrimaryGun
+  - type: GunDualWielding
+    weaponGroup: Heavy
+  - type: GunPointBlank
   - type: GunGroupSpreadPenalty
   - type: RMCFireGroup
     group: Rifles

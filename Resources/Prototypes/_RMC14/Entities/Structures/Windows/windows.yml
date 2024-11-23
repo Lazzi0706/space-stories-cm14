@@ -166,6 +166,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameAlmayer
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowAlmayer
     node: windowAlmayerReinforced
@@ -254,6 +255,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameWhite
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowWhite
     node: windowWhiteReinforced
@@ -301,6 +303,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameColony
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowColony
     node: windowColony
@@ -351,6 +354,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameColonyReinforced
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowColonyReinforced
     node: windowColonyReinforced
@@ -404,6 +408,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameHunterReinforced
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowHunterReinforced
     node: windowHunterReinforced
@@ -451,6 +456,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameWood
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowWood
     node: windowWood
@@ -501,6 +507,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameWood
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowWood
     node: windowWoodReinforced
@@ -551,6 +558,7 @@
           - !type:ChangeConstructionNodeBehavior
             node: windowFrameAI
   - type: RMCWallExplosionDeletable
+  - type: DestroyedByExplosionType
   - type: Construction
     graph: RMCWindowAI
     node: windowAIReinforced

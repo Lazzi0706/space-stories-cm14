@@ -62,6 +62,9 @@
     item: Sidearm
   - type: GunUnskilledPenalty
     angleIncrease: 5
+  - type: GunPointBlank
+  - type: GunDualWielding
+    weaponGroup: Handgun
   - type: AttachableHolder
     slots:
       rmc-aslot-barrel:
@@ -115,6 +118,8 @@
   components:
   - type: Projectile
   - type: RMCProjectileDamageFalloff
+  - type: RMCProjectileAccuracy
+    accuracy: 60
 
 - type: entity
   parent: CMBulletBase

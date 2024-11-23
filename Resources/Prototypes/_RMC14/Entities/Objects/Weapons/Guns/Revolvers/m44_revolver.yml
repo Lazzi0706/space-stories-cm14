@@ -156,6 +156,8 @@
         Piercing: 72
   - type: CMArmorPiercing
     amount: 5
+  - type: RMCProjectileAccuracy
+    accuracy: 90
 
 - type: entity
   parent: CMBulletBase
@@ -173,6 +175,11 @@
       ignoreModifiers: true
   - type: CMArmorPiercing
     amount: 35
+  - type: RMCProjectileAccuracy
+    accuracy: 90
+    thresholds:
+    - range: 12
+      falloff: 10
 
 - type: Tag
   id: RMCSpeedLoaderM44
