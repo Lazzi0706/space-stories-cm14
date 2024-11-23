@@ -2,6 +2,7 @@ using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;
 using Content.Server.Power.Components;
 using Content.Server.Radio.Components;
+using Content.Shared._RMC14.Marines;
 using Content.Shared.Chat;
 using Content.Shared.Database;
 using Content.Shared.Radio;
@@ -83,6 +84,11 @@ public sealed class RadioSystem : EntitySystem
         var name = evt.VoiceName;
         name = FormattedMessage.EscapeText(name);
 
+        var prefix = "";
+        TryComp<JobPrefixComponent>(messageSource, out var jobPrefix);
+        if (jobPrefix?.Prefix != null)
+            prefix += $" ({jobPrefix?.Prefix})";
+
         SpeechVerbPrototype speech;
         if (evt.SpeechVerb != null && _prototype.TryIndex(evt.SpeechVerb, out var evntProto))
             speech = evntProto;
@@ -98,7 +104,7 @@ public sealed class RadioSystem : EntitySystem
             ("fontType", speech.FontId),
             ("fontSize", speech.FontSize),
             ("verb", Loc.GetString(_random.Pick(speech.SpeechVerbStrings))),
-            ("channel", $"\\[{channel.LocalizedName}\\]"),
+            ("channel", $"\\[{channel.LocalizedName}{prefix}\\]"),
             ("name", name),
             ("message", content));
 
