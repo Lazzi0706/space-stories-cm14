@@ -19,5 +19,5 @@ rmc-xeno-egg-ghost-confirm = Вы уверены, что хотите стать
 rmc-xeno-egg-throw-xeno = Если бросить яйцо, оно разобьется!
 rmc-xeno-egg-throw = Это плохая идея.
 rmc-xeno-egg-plant-self = Мы начинаем сажать яйцо.
-rmc-xeno-egg-plant = { CAPITALIZE($user) } начинает подбрасывать яйцо.
+rmc-xeno-egg-plant = { CAPITALIZE($user) } начинает сажать яйцо.
 rmc-xeno-egg-carrier-death = { CAPITALIZE(THE($xeno)) } уронил несколько драгоценных яиц!

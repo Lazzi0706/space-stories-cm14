@@ -1,10 +1,10 @@
 stamp-component-stamped-name-cm-default = С печатью
-stamp-component-stamped-name-cm-we-ya = We-Ya
+stamp-component-stamped-name-cm-we-ya = Ве-Я
 stamp-component-stamped-name-cm-marine = Верховное командование морской пехоты
-stamp-component-stamped-name-cm-weyyu = Weyland-Yutani
-stamp-component-stamped-name-cm-uscm = Верховное командование КША
+stamp-component-stamped-name-cm-weyyu = Вестон Яманда
+stamp-component-stamped-name-cm-uscm = Верховное командование КМП США
 stamp-component-stamped-name-cm-cmb = Бюро колониальных маршалов
-stamp-component-stamped-name-cm-co = Комендантский офицер
+stamp-component-stamped-name-cm-co = Командующий офицер
 stamp-component-stamped-name-cm-aso = Офицер вспомогательного обеспечения
 stamp-component-stamped-name-cm-cmp = Начальник военной полиции
 stamp-component-stamped-name-cm-cmo = Главный медицинский офицер

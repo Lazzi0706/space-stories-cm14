@@ -9,7 +9,7 @@ department-CMRequisitions = Поставки
 cm-department-Requisitions-description = Выдавать припасы морским пехотинцам.
 # marines
 department-CMSquad = Морпехи
-cm-department-Marine-description = Они составляют основной боевой состав "Альмайера" и отправляются на планету для борьбы со всеми видами опасностей в секторе Нероид.
+cm-department-Marine-description = Они составляют основной боевой состав "Алмайера" и отправляются на планету для борьбы со всеми видами опасностей в секторе Нероид.
 # engineering
 department-CMEngineering = Инженерия
 cm-department-Engineering-description = Ваша задача - обслуживать двигатели корабля и поддерживать все в рабочем состоянии.
