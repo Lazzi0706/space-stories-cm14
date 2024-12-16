@@ -327,7 +327,7 @@
         amount: 13
       #- id: M240 Incinerator Tank
       #  amount: 3
-      - id: CMMagazineRifleM54CE2Camo
+      - id: CMMagazineRifleM54CE2
         amount: 3
       #- id: M41A MK1 Magazine (10x24mm)
       #  amount: 5
@@ -427,7 +427,7 @@
         amount: 5
       - id: RMCAttachmentM63Stock
         amount: 5
-      - id: RMCAttachmentM54CStockSolidCamo
+      - id: RMCAttachmentM54CStockSolid
         amount: 5
       - id: RMCAttachmentM54CStockCollapsibleCamo
         amount: 5

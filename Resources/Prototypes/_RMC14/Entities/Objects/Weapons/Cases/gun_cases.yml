@@ -84,8 +84,8 @@
   - type: StorageFill
     contents:
     - id: WeaponRifleM54CE2Camo
-    - id: CMMagazineRifleM54CE2Camo
-    - id: CMMagazineRifleM54CE2Camo # Replace with a holotargeting mag once that ammo is implemented.
+    - id: CMMagazineRifleM54CE2
+    - id: CMMagazineRifleM54CE2 # Replace with a holotargeting mag once that ammo is implemented.
 
 - type: entity
   parent: BaseStorageItem

@@ -171,7 +171,7 @@
   components:
   - type: StorageFill
     contents:
-    - id: CMMagazineRifleM54CE2Camo
+    - id: CMMagazineRifleM54CE2
       amount: 2
 
 # M44 Revolver

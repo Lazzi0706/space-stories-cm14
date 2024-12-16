@@ -169,7 +169,7 @@
     contents:
       - id: RMCAttachmentM44MagnumSharpshooterStock
         amount: 3
-      - id: RMCAttachmentM54CStockSolidCamo
+      - id: RMCAttachmentM54CStockSolid
         amount: 3
       - id: RMCAttachmentM63Stock
         amount: 3
@@ -195,7 +195,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: RMCAttachmentM54CStockSolidCamo
+      - id: RMCAttachmentM54CStockSolid
         amount: 4
 
 - type: entity

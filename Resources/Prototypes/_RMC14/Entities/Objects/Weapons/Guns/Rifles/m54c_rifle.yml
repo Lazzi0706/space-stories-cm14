@@ -71,7 +71,7 @@
           - RMCAttachmentS84xTelescopicScope
           - RMCAttachmentS42xTelescopicMiniscope
       rmc-aslot-stock:
-        startingAttachable: RMCAttachmentM54CStockCollapsibleCamo
+        startingAttachable: RMCAttachmentM54CStockCollapsible
         whitelist:
           tags:
           - RMCAttachmentM54CStockSolid
@@ -196,7 +196,7 @@
           - RMCAttachmentS84xTelescopicScope
           - RMCAttachmentS42xTelescopicMiniscope
       rmc-aslot-stock:
-        startingAttachable: RMCAttachmentM54CStockCollapsibleJungle
+        startingAttachable: RMCAttachmentM54CStockCollapsible
         whitelist:
           tags:
           - RMCAttachmentM54CStockSolid
@@ -248,7 +248,7 @@
           - RMCAttachmentS84xTelescopicScope
           - RMCAttachmentS42xTelescopicMiniscope
       rmc-aslot-stock:
-        startingAttachable: RMCAttachmentM54CStockCollapsibleSnow
+        startingAttachable: RMCAttachmentM54CStockCollapsible
         whitelist:
           tags:
           - RMCAttachmentM54CStockSolid
@@ -299,7 +299,7 @@
           - RMCAttachmentS84xTelescopicScope
           - RMCAttachmentS42xTelescopicMiniscope
       rmc-aslot-stock:
-        startingAttachable: RMCAttachmentM54CStockCollapsibleClassic
+        startingAttachable: RMCAttachmentM54CStockCollapsible
         whitelist:
           tags:
           - RMCAttachmentM54CStockSolid
@@ -350,7 +350,7 @@
           - RMCAttachmentS84xTelescopicScope
           - RMCAttachmentS42xTelescopicMiniscope
       rmc-aslot-stock:
-        startingAttachable: RMCAttachmentM54CStockCollapsibleUrban
+        startingAttachable: RMCAttachmentM54CStockCollapsible
         whitelist:
           tags:
           - RMCAttachmentM54CStockSolid
