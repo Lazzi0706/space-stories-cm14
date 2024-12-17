@@ -4,18 +4,5 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: GameRule
-    minPlayers: 25
-  - type: CMDistressSignalRule
-
-- type: entity
-  id: CMDistressSignalLowPop
-  parent: BaseGameRule
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: GameRule
     minPlayers: 1
-    maxPlayers: 25
   - type: CMDistressSignalRule
-    squadIds:
-    - SquadAlpha
-    - SquadBravo
