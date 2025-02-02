@@ -91,12 +91,6 @@ cooldown_seconds = 1
 [procgen]
 preload = false
 
-[replay]
-auto_record = true
-max_compressed_size = 4194304
-max_uncompressed_size = 8388608
-auto_record_temp_dir = "recording"
-
 [queue]
 enabled = true
 

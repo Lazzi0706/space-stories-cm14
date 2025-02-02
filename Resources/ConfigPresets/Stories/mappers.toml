@@ -11,7 +11,7 @@ enabled = false
 deadmin_on_join = false
 
 [game]
-hostname = "📚 Space Stories - Colonial Marines Mappers ⚙ [TTS]"
+hostname = "📚 Space Stories - Colonial Marines Stage ⚙ [TTS]"
 desc = """
                                                             📕 𝗦𝗽𝗮𝗰𝗲 𝗦𝘁𝗼𝗿𝗶𝗲𝘀 - Colonial Marines! ⚙
 •────────────────────────────────── ✧ ──────────────────────────────────•
@@ -28,7 +28,7 @@ role_whitelist = false
 time = 0.0
 
 [hub]
-server_url = "ss14s://spacestories.club/mappers-cm"
+server_url = "ss14s://spacestories.club/stage-cm"
 
 [whitelist]
 enabled = true
