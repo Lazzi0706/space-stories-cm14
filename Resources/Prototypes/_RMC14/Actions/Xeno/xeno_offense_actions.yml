@@ -898,6 +898,42 @@
 
 - type: entity
   parent: ActionXenoBase
+  id: ActionXenoDeployTraps
+  name: Deploy Traps (60)
+  description: Deploys a line of temporary resin traps that, when an enemy walks over, stuns them momentarily.
+  components:
+  - type: WorldTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Stories/Actions/xeno_actions.rsi
+      state: resin_pit
+    event: !type:RMCXenoDeployTrapsActionEvent
+    useDelay: 20
+    range: 13
+  - type: ActionBlockIfResting
+  - type: XenoActionPlasma
+    cost: 60
+
+- type: entity
+  parent: ActionXenoBase
+  id: ActionXenoDeployAcidMine
+  name: Acid Mine (40)
+  description: Designate a tile in which a 3x3 acid mine will erupt. If anyone is in the 3x3 ranged acid mine, they'll be hit with acid.
+  components:
+  - type: WorldTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: _Stories/Actions/xeno_actions.rsi
+      state: acid_mine
+    event: !type:RMCXenoDeployAcidMineEvent
+    useDelay: 6
+    range: 13
+  - type: ActionBlockIfResting
+  - type: XenoActionPlasma
+    cost: 40
+
+- type: entity
+  parent: ActionXenoBase
   id: ActionXenoTailJab
   name: Tail Jab
   description: Jab an enemy in a 2.5 tile range, doing high damage and slowing them.
@@ -905,7 +941,7 @@
   - type: EntityTargetAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: prae_pierce
     event: !type:XenoTailJabActionEvent
     range: 2.5
@@ -924,7 +960,7 @@
   - type: WorldTargetAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: rav_spike
     event: !type:XenoFlurryActionEvent
     useDelay: 3
@@ -941,7 +977,7 @@
   - type: EntityTargetAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: headbite
     event: !type:XenoHeadbiteActionEvent
     range: 1.5

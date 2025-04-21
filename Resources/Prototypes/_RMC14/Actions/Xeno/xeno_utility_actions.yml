@@ -274,7 +274,7 @@
   - type: InstantAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: queen_eye
     event: !type:QueenEyeActionEvent
     useDelay: 0.25

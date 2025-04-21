@@ -192,7 +192,7 @@
   - type: InstantAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: plant_weeds
     event: !type:XenoPlantWeedsActionEvent
       limitDistance: true
@@ -207,7 +207,7 @@
   - type: WorldTargetAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: plant_weeds
     event: !type:XenoExpandWeedsActionEvent
     useDelay: 0.5

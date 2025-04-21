@@ -326,6 +326,6 @@
   - type: InstantAction
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: lay_egg
     event: !type:XenoGenerateEggsActionEvent

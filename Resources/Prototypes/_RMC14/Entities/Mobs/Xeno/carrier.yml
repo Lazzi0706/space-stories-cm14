@@ -106,7 +106,7 @@
   id: CMXenoCarrier
   components:
   - type: Sprite
-    sprite: _RMC14/Mobs/Xenonids/Carrier/carrier.rsi
+    sprite: _Stories/Mobs/Xenos/Carrier/carrier.rsi
     layers:
     - map: [ "enum.XenoVisualLayers.Base" ]
       state: alive
@@ -161,7 +161,7 @@
   suffix: Eggsac
   components:
   - type: Sprite
-    sprite: _RMC14/Mobs/Xenonids/Carrier/eggsac_carrier.rsi
+    sprite: _Stories/Mobs/Xenos/Carrier/eggsac_carrier.rsi
     layers:
     - map: [ "enum.XenoVisualLayers.Base" ]
       state: alive

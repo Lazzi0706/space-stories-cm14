@@ -123,7 +123,7 @@
   suffix: Vampire
   components:
   - type: Sprite
-    sprite: _RMC14/Mobs/Xenonids/Lurker/vampire_lurker.rsi
+    sprite: _Stories/Mobs/Xenos/Lurker/vampire_lurker.rsi
   - type: Xeno
     role: CMXenoLurker
     actionIds:
