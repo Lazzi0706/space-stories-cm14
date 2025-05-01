@@ -22,7 +22,7 @@ rmc-announcement-ares-lz-designated =
 rmc-announcement-ares-online = [color=#CECECE][font size=16][bold]ARES в сети[/bold][/font][/color][color=red][font size=16][bold]
     
     { $message }[/bold][/font][/color]
-rmc-announcement-ares-map = [color=#CECECE][font size=16][bold]КСШ Алмайер[/bold][/font][/color][color=red][font size=16][bold]
+rmc-announcement-ares-map = [color=#CECECE][font size=16][bold]ВКСШ Алмайер[/bold][/font][/color][color=red][font size=16][bold]
     
     { $message }[/bold][/font][/color]
 rmc-announcement-cooldown = Пожалуйста, подождите не менее { $seconds } секунд между объявлениями
