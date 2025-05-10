@@ -315,7 +315,6 @@
     - name: Оборудование
       entries:
       - id: CMBeltUtility
-        name: Утилиты tool belt
         amount: 4
       - id: RMCCableCoil
         amount: 4

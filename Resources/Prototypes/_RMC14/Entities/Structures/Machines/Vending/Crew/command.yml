@@ -514,12 +514,12 @@
     - name: Основное Командира
       takeOne: CMProtagGun
       entries:
-      - id: RMCM54CMK1CaseAP # Stories-Tweak. Замена пока RMC не пофиксят имбапушку
-        name: Штурмовая Винтовка M41A MK1 ББ
+      - id: WeaponRifleM59A
+        name: Прототип Винтовки M46C
       - id: CMCOSmartGunOperatorEquipmentCaseBelt
         name: Умное Оружие Командира
         recommended: true # TODO RMC14 Make choices: colour the options brown
-    - name: Commander's Secondary
+    - name: Второстепенное Оружие Командир
       choices: { CMSecondary: 1 }
       entries:
       - id: RMCD50WinterWyvernBeltFilled
