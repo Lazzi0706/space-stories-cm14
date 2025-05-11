@@ -31,7 +31,6 @@
   - type: SolutionContainerManager
   - type: InjectableSolution
     solution: chemicals
-  - type: RMCStamina
   - type: Bloodstream
     bloodReagent: Blood
     bloodMaxVolume: 560

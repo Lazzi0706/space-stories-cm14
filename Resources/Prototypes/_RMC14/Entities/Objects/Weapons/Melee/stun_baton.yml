@@ -11,7 +11,7 @@
     slots:
     - Belt
     - Suitstorage
-  - type: RMCStaminaDamageOnHit
+  - type: StaminaDamageOnHit
     damage: 100
   - type: MeleeRequiresSkill
     skills:
