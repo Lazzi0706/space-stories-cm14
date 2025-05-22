@@ -1,5 +1,6 @@
 using Content.Client.Administration.Managers;
 using Content.Client.Audio;
+using Content.Shared._RMC14.CCVar;
 using Content.Shared.CCVar;
 using Content.Shared._Stories.SCCVars;
 using Robust.Client.Audio;
@@ -61,12 +62,16 @@ public sealed partial class AudioTab : Control
             scale: ContentAudioSystem.TtsMultiplier);
         // Stories-TTS-End
 
-        // Stories-HijackVolume-Start
+        // RMC14
         Control.AddOptionPercentSlider(
-            SCCVars.HijackVolume,
-            SliderVolumeHijackVolume,
-            scale: ContentAudioSystem.HijackMultiplier);
-        // Stories-HijackVolume-End
+            RMCCVars.VolumeGainCassettes,
+            SliderVolumeCassettes,
+            scale: 0.12f);
+
+        Control.AddOptionPercentSlider(
+            RMCCVars.VolumeGainHijackSong,
+            SliderVolumeHijackSong,
+            scale: 0.32f);
 
         Control.AddOptionSlider(
             CCVars.MaxAmbientSources,

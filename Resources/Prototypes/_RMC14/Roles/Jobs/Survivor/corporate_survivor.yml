@@ -33,12 +33,14 @@
     - type: EquipSurvivorPreset
       preset: RMCSurvivorPresetCorporate
     - type: RMCSurvivor
+    - type: RMCRibbon
     - type: MotionDetectorTracked
     - type: NpcFactionMember
       factions:
       - WeYa
       - Survivor
     - type: IntelRescueSurvivorObjective
+    - type: RMCAllowSuitStorage
 
 - type: startingGear
   id: RMCGearSurvivorCorporate

@@ -79,6 +79,25 @@
     map: /Maps/_RMC14/chances.yml
     camouflage: Classic
     announcement: "Пан-пан. Говорит командующий офицер ВКСШ Ханьют, КМП США FORECON. В настоящее время мы находимся на планете LV-522 в непосредственной близости от 'Притнезии Шанса'. Мы не можем связаться с 'Ханьют', и наши десантные корабли не могут взлететь в данный момент. Мы запрашиваем помощь у любых находящихся поблизости судов; эта трансляция будет повторяться каждые 24 часа." # Stories-Translate
+    survivorJobs:
+    - RMCSurvivorCommandingOfficer: 1
+    - RMCSurvivorForeconBase: 7
+    survivorJobInserts:
+      RMCSurvivorCommandingOfficer:
+      - RMCSurvivorForeconCommander: -1
+      RMCSurvivorForeconBase:
+      - RMCSurvivorForeconSupportTech: 1
+      - RMCSurvivorForeconSquadLeader: 1
+      - RMCSurvivorForeconSniper: 1
+      - RMCSurvivorForeconSmartgunOperator: 1
+      - RMCSurvivorForeconMarksman: 1
+      - RMCSurvivorForeconRifleman: 3
+    survivorJobOverrides:
+      CMSurvivor: RMCSurvivorForeconBase
+      CMSurvivorCorporate: RMCSurvivorForeconBase
+      CMSurvivorDoctor: RMCSurvivorForeconBase
+      CMSurvivorEngineer: RMCSurvivorForeconBase
+      CMSurvivorSecurity: RMCSurvivorForeconBase
 
 - type: entity
   id: RMCPlanetHybrisa
