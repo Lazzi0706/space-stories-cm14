@@ -162,8 +162,8 @@
     solution: beaker
   - type: FitsInDispenser
     solution: beaker
-  - type: RefillableSolution
-    solution: beaker
+  # - type: RefillableSolution # Stories-Fix
+  #   solution: beaker
   - type: DrainableSolution
     solution: beaker
   - type: ExaminableSolution
