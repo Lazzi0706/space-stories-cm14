@@ -1,10 +1,15 @@
+using Content.Shared._RMC14.Marines.Orders;
 using Content.Shared._RMC14.Sound;
+using Content.Shared._Stories.LeadershipWhistle;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Sound.Components;
 using Content.Shared.Timing;
 using Content.Shared.Whistle;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._RMC14.Whistle;
@@ -15,6 +20,9 @@ public sealed class RMCWhistleSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly WhistleSystem _whistle = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    [Dependency] private readonly STWhistleSystem _stWhistle = default!; // Space Stories - Whistles | Helper
 
     public override void Initialize()
     {
@@ -23,7 +31,46 @@ public sealed class RMCWhistleSystem : EntitySystem
         SubscribeLocalEvent<RMCWhistleComponent, UseInHandEvent>(OnUseInHand);
         SubscribeLocalEvent<RMCWhistleComponent, GetItemActionsEvent>(OnGetItemActions);
         SubscribeLocalEvent<RMCWhistleComponent, SoundActionEvent>(OnWhistleAction);
+
+        // Space Stories - Whistles - Start
+        SubscribeLocalEvent<MoveActionEvent>(OnOrderAction);
+        SubscribeLocalEvent<HoldActionEvent>(OnOrderAction);
+        SubscribeLocalEvent<FocusActionEvent>(OnOrderAction);
+        // Space Stories - Whistles - End
     }
+
+    #region ST-Whistles
+
+    private void OnOrderAction(MoveActionEvent ev)
+    {
+        OnOrderAction<MoveActionEvent>(ev.Performer, STOrderTypes.Move);
+    }
+
+    private void OnOrderAction(HoldActionEvent ev)
+    {
+        OnOrderAction<HoldActionEvent>(ev.Performer, STOrderTypes.Hold);
+    }
+
+    private void OnOrderAction(FocusActionEvent ev)
+    {
+        OnOrderAction<FocusActionEvent>(ev.Performer, STOrderTypes.Focus);
+    }
+
+    private void OnOrderAction<T>(EntityUid user, STOrderTypes order) where T : InstantActionEvent
+    {
+        if (!_stWhistle.TryGetWhistleInSlotOrHands(user, out var whistle) || whistle is not { })
+            return;
+        if (!TryComp<EmitSoundOnUseComponent>(whistle, out var emitOnUseComp))
+            return;
+
+        if (TryComp<LeadershipWhistleComponent>(whistle.Value, out var leaderWhistleComp))
+            _audio.PlayPredicted(leaderWhistleComp.OrderWhistleSounds[order], user, user);
+        else
+            _audio.PlayPredicted(emitOnUseComp.Sound, user, user);
+
+        TryWhistle(whistle.Value, user);
+    }
+    #endregion
 
     private void OnGetItemActions(Entity<RMCWhistleComponent> ent, ref GetItemActionsEvent args)
     {
