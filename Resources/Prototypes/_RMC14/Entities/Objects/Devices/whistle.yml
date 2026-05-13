@@ -43,7 +43,17 @@
       path: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_move.ogg
   - type: LeadershipWhistle 
     orderWhistleSounds:
-      Move: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_move.ogg
-      Hold: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_hold.ogg
-      Focus: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_focus.ogg
+      Move: 
+        path: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_move.ogg
+        params:
+          volume: -3
+      Hold: 
+        path: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_hold.ogg
+        params:
+          volume: -3
+      Focus: 
+        path: /Audio/_Stories/Items/Devices/LeadershipWhistle/trench_whistle_focus.ogg
+        params:
+          volume: -3
+      
 # Space Stories - Whistles - End

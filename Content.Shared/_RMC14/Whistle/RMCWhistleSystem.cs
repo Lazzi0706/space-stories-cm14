@@ -23,12 +23,12 @@ public sealed class RMCWhistleSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly WhistleSystem _whistle = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     // Space Stories - Whistles - Start
     [Dependency] private readonly STWhistleSystem _stWhistle = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly EvasionSystem _evasion = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     // Space Stories - Whistles - End
 
     public override void Initialize()

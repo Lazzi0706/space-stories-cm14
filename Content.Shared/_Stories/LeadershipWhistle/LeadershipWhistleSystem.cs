@@ -18,9 +18,10 @@ public sealed partial class LeadershipWhistleSystem : EntitySystem
 
     private void OnWhistleEquip(Entity<LeadershipWhistleComponent> ent, ref GotEquippedHandEvent args)
     {
-        if (!TryComp<MarineOrdersComponent>(args.User, out var marineOrders))
+        if (!TryComp<MarineOrdersComponent>(args.User, out var marineOrders) || marineOrders.OrderRange >= ent.Comp.MaxOrderAreaBuff)
             return;
 
+        marineOrders.Cooldown += ent.Comp.ActionOrderCooldownDebuff;
         marineOrders.OrderRange += ent.Comp.OrderAreaBuff;
     }
     private void OnWhistleUnequip(Entity<LeadershipWhistleComponent> ent, ref GotUnequippedHandEvent args)
@@ -28,14 +29,16 @@ public sealed partial class LeadershipWhistleSystem : EntitySystem
         if (!TryComp<MarineOrdersComponent>(args.User, out var marineOrders))
             return;
 
+        marineOrders.Cooldown -= ent.Comp.ActionOrderCooldownDebuff;
         marineOrders.OrderRange -= ent.Comp.OrderAreaBuff;
     }
 
     private void OnWhistleEquip(Entity<LeadershipWhistleComponent> ent, ref ClothingGotEquippedEvent args)
     {
-        if (!TryComp<MarineOrdersComponent>(args.Wearer, out var marineOrders))
+        if (!TryComp<MarineOrdersComponent>(args.Wearer, out var marineOrders) || marineOrders.OrderRange >= ent.Comp.MaxOrderAreaBuff)
             return;
 
+        marineOrders.Cooldown += ent.Comp.ActionOrderCooldownDebuff;
         marineOrders.OrderRange += ent.Comp.OrderAreaBuff;
     }
 
@@ -44,6 +47,7 @@ public sealed partial class LeadershipWhistleSystem : EntitySystem
         if (!TryComp<MarineOrdersComponent>(args.Wearer, out var marineOrders))
             return;
 
+        marineOrders.Cooldown -= ent.Comp.ActionOrderCooldownDebuff;
         marineOrders.OrderRange -= ent.Comp.OrderAreaBuff;
     }
 }
