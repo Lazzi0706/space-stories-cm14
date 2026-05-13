@@ -1,10 +1,13 @@
+using Content.Shared._RMC14.Evasion;
 using Content.Shared._RMC14.Marines.Orders;
 using Content.Shared._RMC14.Sound;
 using Content.Shared._Stories.LeadershipWhistle;
 using Content.Shared.Actions;
 using Content.Shared.Actions.Events;
+using Content.Shared.EntityEffects.Effects;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Sound.Components;
 using Content.Shared.Timing;
 using Content.Shared.Whistle;
@@ -22,7 +25,11 @@ public sealed class RMCWhistleSystem : EntitySystem
     [Dependency] private readonly WhistleSystem _whistle = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    [Dependency] private readonly STWhistleSystem _stWhistle = default!; // Space Stories - Whistles | Helper
+    // Space Stories - Whistles - Start
+    [Dependency] private readonly STWhistleSystem _stWhistle = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
+    [Dependency] private readonly EvasionSystem _evasion = default!;
+    // Space Stories - Whistles - End
 
     public override void Initialize()
     {
@@ -64,7 +71,30 @@ public sealed class RMCWhistleSystem : EntitySystem
             return;
 
         if (TryComp<LeadershipWhistleComponent>(whistle.Value, out var leaderWhistleComp))
+        {
             _audio.PlayPredicted(leaderWhistleComp.OrderWhistleSounds[order], user, user);
+            switch (order)
+            {
+                case STOrderTypes.Move:
+                    var moveOrder = Comp<MoveOrderComponent>(user);
+                    moveOrder.MoveSpeedModifier *= leaderWhistleComp.MultiplierOrderBuff;
+                    moveOrder.EvasionModifier *= leaderWhistleComp.MultiplierOrderBuff;
+
+                    _movement.RefreshMovementSpeedModifiers(user);
+                    _evasion.RefreshEvasionModifiers(user);
+                    break;
+                case STOrderTypes.Hold:
+                    var holdOrder = Comp<HoldOrderComponent>(user);
+                    holdOrder.DamageModifier *= 1.25;
+                    holdOrder.PainModifier *= 1.25;
+                    break;
+                case STOrderTypes.Focus:
+                    var focusOrder = Comp<FocusOrderComponent>(user);
+                    focusOrder.AccuracyModifier *= 1.25;
+                    focusOrder.AccuracyPerTileModifier *= 1.25;
+                    break;
+            }
+        }
         else
             _audio.PlayPredicted(emitOnUseComp.Sound, user, user);
 
