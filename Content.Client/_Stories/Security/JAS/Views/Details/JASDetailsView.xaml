@@ -1,27 +1,26 @@
-﻿<controls:JASDetailsView
+﻿<Control
     xmlns="https://spacestation14.io"
-    xmlns:controls="clr-namespace:Content.Client._Stories.Security.JAS.Views"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-    xmlns:ui="clr-namespace:Content.Client._RMC14.UserInterface"
     xmlns:uiControls="clr-namespace:Content.Client.UserInterface.Controls">
-    <PanelContainer Name="JASDetails">
+    <PanelContainer Name="JASDetailsViewContainer">
         <PanelContainer.PanelOverride>
             <graphics:StyleBoxFlat
                 BackgroundColor="#000000"
                 BorderColor="#3F3F3F"/>
         </PanelContainer.PanelOverride>
-        <GridContainer Name="DetailsControlHelp">
+        <GridContainer Name="JASDetailsViewInputContainer">
             <Label Text="# please specify the circumstances or details of the violation here" Modulate="Cyan"/>
             <Label Text="# all information here will be used when compiling the report and will not be used when generating the disk" Modulate="Cyan"/>
             <Label Text="# and will not be used when generating the disk" Modulate="Cyan"/>
-            <PanelContainer MinHeight="100"
-                            VerticalAlignment="Stretch" HorizontalExpand="True">
-                <TextEdit Name="Input" Modulate="#F3F3F3" Access="Public"/>
+
+            <PanelContainer MinHeight="100" VerticalAlignment="Stretch" HorizontalExpand="True">
+                <TextEdit Name="JASDetailsViewInput" Modulate="#F3F3F3" Access="Public"/>
             </PanelContainer>
+
             <uiControls:HighDivider Modulate="#3F3F3F" SetHeight="5"/>
-            <BoxContainer Name="EditButton" Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Text="[^X] Save" Access="Public" Name="SaveButton" StyleClasses="ButtonSquare" Modulate="Orange"/>
+            <BoxContainer Name="JASDetailsViewControls" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Text="[^X] Save" Access="Public" Name="JASDetailsViewSaveButton" StyleClasses="ButtonSquare" Modulate="Orange"/>
             </BoxContainer>
         </GridContainer>
     </PanelContainer>
-</controls:JASDetailsView>
+</Control>

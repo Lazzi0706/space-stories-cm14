@@ -27,8 +27,8 @@
 
 
 - type: lawCategory
-  id: PrecautionaryCategory
-  name: Precautionary
+  id: OptionalCategory
+  name: Optional
 
 
 # -- Charges --
@@ -72,6 +72,11 @@
     execution: true
     idTermination: true
 
-# Precautionary
+# Optional
 
-
+- type: lawCharge
+  id: ResistingArrest
+  name: Resisting Arrest
+  description: To resist a lawful search by Military Police.
+  details:
+    confinementTime: 10 # Minutes

@@ -27,6 +27,9 @@ public sealed partial class SharedJASystem : EntitySystem
                 subs.Event<JASTabSelectedMsg>(OnTabSelected);
 
                 subs.Event<JASDetailsSaveMsg>(OnDetailsSave);
+
+                subs.Event<JASChargeAddMsg>(OnChargeAdd);
+                // subs.Event<JASChargeRemoveMsg>(OnChargeRemove);
             });
     }
 
@@ -65,6 +68,14 @@ public sealed partial class SharedJASystem : EntitySystem
         ent.Comp.User = "";
 
         UpdateStates(ent);
+    }
+
+    private void OnChargeAdd(Entity<JASComponent> ent, ref JASChargeAddMsg args)
+    {
+        if (_net.IsClient)
+            return;
+
+        ent.Comp.ChoosedLaws.Add(args.Proto);
     }
 
     private void OnDetailsSave(Entity<JASComponent> ent, ref JASDetailsSaveMsg args)

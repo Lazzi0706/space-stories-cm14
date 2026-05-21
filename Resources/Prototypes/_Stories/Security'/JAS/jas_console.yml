@@ -24,5 +24,7 @@
   - type: JAS
     laws:
       - VariableCategory
+      - MinorCategory
       - MajorCategory
       - CapitalCategory
+      - OptionalCategory

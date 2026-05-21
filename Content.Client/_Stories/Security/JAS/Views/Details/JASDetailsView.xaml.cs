@@ -2,7 +2,7 @@
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client._Stories.Security.JAS.Views;
+namespace Content.Client._Stories.Security.JAS.Views.Details;
 
 [GenerateTypedNameReferences]
 public sealed partial class JASDetailsView : Control

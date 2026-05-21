@@ -1,7 +1,8 @@
-﻿using System.Linq;
-using Content.Client._Stories.Security.JAS.Controls;
-using Content.Client._Stories.Security.JAS.Layouts;
-using Content.Client._Stories.Security.JAS.Views;
+﻿using Content.Client._Stories.Security.JAS.Layouts.Home;
+using Content.Client._Stories.Security.JAS.Layouts.Main;
+using Content.Client._Stories.Security.JAS.UiComponents;
+using Content.Client._Stories.Security.JAS.Views.Charges;
+using Content.Client._Stories.Security.JAS.Views.Details;
 using Content.Shared._Stories.Security.JAS;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
@@ -9,14 +10,26 @@ using Robust.Shared.Utility;
 
 namespace Content.Client._Stories.Security.JAS;
 
+/* TODO:
+    - Нормальное формирование списка статьей с сохранением состояния для консоли и их отображение
+    - Отправка ВЫБРАННЫХ СТАТЬЕЙ, ВЫБРАННЫХ УЛИК, ВЫБРАННЫХ СВИДЕТЕЛЕЙ, ОБВИНИТЕЛЯ, ОБВИНЕМОГО как форма на SharedJASystem с формированием отчёта для консоли и таймера
+    - Переписать ебучие JASBUI (я заебался от срача)
+ */
+
 public sealed class JASBui : BoundUserInterface
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+
+    private readonly HashSet<JASChargeCard> _variableCharges = [];
+    private readonly HashSet<JASChargeCard> _minorCharges = [];
+    private readonly HashSet<JASChargeCard> _majorCharges = [];
+    private readonly HashSet<JASChargeCard> _capitalCharges = [];
+    private readonly HashSet<JASChargeCard> _optionalCharges = [];
+
     private JASWindow? _window;
 
-    private JASMainLayout? _mainLayout;
     private JASHomeLayout? _homeLayout;
-
+    private JASMainLayout? _mainLayout;
 
     private JASDetailsView? _detailsView;
     private JASChargesView? _chargesView;
@@ -34,8 +47,8 @@ public sealed class JASBui : BoundUserInterface
         _window = this.CreateWindow<JASWindow>();
         _homeLayout = new JASHomeLayout();
 
-        _window.LoginButton.OnPressed += _ => Login();
-
+        _window.JASHomeLayoutWrapper.AddChild(_homeLayout);
+        _homeLayout.JASLoginButton.OnPressed += _ => Login();
     }
 
     protected override void UpdateState(BoundUserInterfaceState rawState)
@@ -52,129 +65,118 @@ public sealed class JASBui : BoundUserInterface
     {
         if (_window == null)
             return;
-        if (!EntMan.TryGetComponent(Owner, out JASComponent? jasComp))
-            return;
 
         if (state.Authorized && _mainLayout == null)
         {
-            _window.JASHomeLayoutContainer.Visible = false;
-            _mainLayout = new JASMainLayout();
-            _detailsView = new JASDetailsView();
-            _chargesView = new JASChargesView();
+            if (_homeLayout == null)
+                return;
 
-            _mainLayout.LogoutButton.OnPressed += _ => Logout();
-
-            _mainLayout.DetailsOptionButton.OnMouseEntered += _ => _mainLayout.Cursor.Text = "jas -chl details";
-            _mainLayout.ChargesOptionButton.OnMouseEntered += _ => _mainLayout.Cursor.Text = "jas -chl charges";
-            _mainLayout.WitnessOptionButton.OnMouseEntered += _ => _mainLayout.Cursor.Text = "jas -chl witness";
-            _mainLayout.ExportOptionButton.OnMouseEntered += _ => _mainLayout.Cursor.Text = "jas -chl export";
-
-            _mainLayout.DetailsOptionButton.OnPressed += _ => ShowTab(JASTabs.Details);
-            _mainLayout.ChargesOptionButton.OnPressed += _ => ShowTab(JASTabs.Charges);
+            _homeLayout.JASHomeLayoutContainer.Visible = false;
+            PopulateMainLayout();
 
             if (state.Tab != JASTabs.None)
                 ShowTab(state.Tab);
 
-            if (!string.IsNullOrEmpty(state.Details))
-                _detailsView.Input.TextRope = new Rope.Leaf(state.Details);
-
-
-            var chargesCategories = jasComp.LawCategories.ToList();
-
-            foreach (var chargeCategory in chargesCategories)
-            {
-                if (!_prototype.TryIndex(chargeCategory, out var chargeCategoryPrototype))
-                    continue;
-
-                var chargeCategoryButton = new JASChargeCategoryButton(chargeCategoryPrototype.Name);
-
-                switch (chargeCategoryPrototype.Name)
-                {
-                    case "Variable":
-                        chargeCategoryButton.Modulate = Color.Lime;
-                        break;
-                    case "Minor":
-                        chargeCategoryButton.Modulate = Color.Yellow;
-                        break;
-                    case "Major":
-                        chargeCategoryButton.Modulate = Color.Orange;
-                        break;
-                    case "Capital":
-                        chargeCategoryButton.Modulate = Color.Crimson;
-                        break;
-                }
-
-                _chargesView.Categories.AddChild(chargeCategoryButton);
-
-                foreach (var charge in chargeCategoryPrototype.Tags.ToList())
-                {
-                    if (!_prototype.TryIndex(charge, out var chargePrototype))
-                        continue;
-
-                    var chargeCard = new JASChargeCard(chargePrototype.Name, chargePrototype.Description);
-
-                    _chargesView.ChargesList.AddChild(chargeCard);
-                }
-            }
-
-            _window.JASMainLayoutContainer.AddChild(_mainLayout);
+            if (!string.IsNullOrEmpty(state.Details) && _detailsView != null)
+                _detailsView.JASDetailsViewInput.TextRope = new Rope.Leaf(state.Details);
         }
-        else if (!state.Authorized)
+        else if (!state.Authorized && _homeLayout != null)
         {
             _mainLayout = null;
-            _window.JASHomeLayoutContainer.Visible = true;
-            _window.JASMainLayoutContainer.RemoveAllChildren();
+            _window.JASMainLayoutWrapper.RemoveAllChildren();
+            _homeLayout.JASHomeLayoutContainer.Visible = true;
         }
 
+
     }
 
-    private void Login()
+    private void PopulateMainLayout()
     {
         if (_window == null)
             return;
-        if (!EntMan.TryGetComponent<JASComponent>(Owner, out var jasComp))
-            return;
 
-        SendPredictedMessage(new JASPrivilegedIdInsertedMsg());
+        _mainLayout = new JASMainLayout();
 
+        _detailsView = new JASDetailsView();
+        _chargesView = new JASChargesView();
+
+        _window.JASMainLayoutWrapper.AddChild(_mainLayout);
+        _mainLayout.JASLogoutButton.OnPressed += _ => Logout();
+
+        _mainLayout.JASDetailsViewButton.OnMouseEntered += _ => ChangeConsoleEntryText("jas -chl details");
+        _mainLayout.JASChargesViewButton.OnMouseEntered += _ => ChangeConsoleEntryText("jas -chl charges");
+        _mainLayout.JASWitnessViewButton.OnMouseEntered += _ => ChangeConsoleEntryText("jas -chl witness");
+        _mainLayout.JASExportViewButton.OnMouseEntered += _ => ChangeConsoleEntryText("jas -chl export");
+
+        _mainLayout.JASDetailsViewButton.OnPressed += _ => ShowTab(JASTabs.Details);
+        _mainLayout.JASChargesViewButton.OnPressed += _ => ShowTab(JASTabs.Charges);
     }
-    private void Logout()
+
+    private void PopulateDetailsView()
     {
-        if (_window == null)
-            return;
-        if (!EntMan.TryGetComponent<JASComponent>(Owner, out var jasComp))
+        if (_detailsView == null || _mainLayout == null)
             return;
 
-        SendPredictedMessage(new JASPrivilegedIdEjectedMsg());
+        _detailsView.JASDetailsViewSaveButton.OnPressed += _ =>
+            SendPredictedMessage(new JASDetailsSaveMsg(Rope.Collapse(_detailsView.JASDetailsViewInput.TextRope)));
+        _mainLayout.JASMainLayoutViewsContainer.AddChild(_detailsView);
+    }
 
+    private void PopulateChragesView()
+    {
+        if (_chargesView == null || _mainLayout == null)
+            return;
+        if (!EntMan.TryGetComponent(Owner, out JASComponent? jasComp))
+            return;
+
+        _mainLayout.JASMainLayoutViewsContainer.AddChild(_chargesView);
     }
 
     private void ShowTab(JASTabs tab)
     {
         if (_window == null || _mainLayout == null)
             return;
-        if (_detailsView == null || _chargesView == null)
-            return;
 
-        _mainLayout.MainMenuOptionsLayout.RemoveAllChildren();
+        _mainLayout.JASMainLayoutViewsContainer.RemoveAllChildren();
 
         switch (tab)
         {
             case JASTabs.Details:
-                _mainLayout.Cursor.Text = "jas -chl details";
-                _detailsView.SaveButton.OnPressed += _ =>
-                {
-                    SendPredictedMessage(new JASDetailsSaveMsg(Rope.Collapse(_detailsView.Input.TextRope)));
-                };
-                _mainLayout.MainMenuOptionsLayout.AddChild(_detailsView);
+                ChangeConsoleEntryText("jas -chl details");
+                PopulateDetailsView();
                 break;
             case JASTabs.Charges:
-                _mainLayout.Cursor.Text = "jas -chl charges";
-                _mainLayout.MainMenuOptionsLayout.AddChild(_chargesView);
+                ChangeConsoleEntryText("jas -chl charges");
+                PopulateChragesView();
                 break;
         }
 
         SendPredictedMessage(new JASTabSelectedMsg(tab));
+    }
+
+    private void ChangeConsoleEntryText(string? text)
+    {
+        if (_mainLayout == null)
+            return;
+
+        _mainLayout.Cursor.Text = string.IsNullOrEmpty(text) ?  "█" : text;
+    }
+
+    private void Login()
+    {
+        if (_window == null)
+            return;
+
+        SendPredictedMessage(new JASPrivilegedIdInsertedMsg());
+
+    }
+
+    private void Logout()
+    {
+        if (_window == null)
+            return;
+
+        SendPredictedMessage(new JASPrivilegedIdEjectedMsg());
     }
 
 }

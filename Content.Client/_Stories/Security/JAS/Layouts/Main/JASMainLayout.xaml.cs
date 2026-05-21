@@ -2,12 +2,12 @@
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client._Stories.Security.JAS.Views;
+namespace Content.Client._Stories.Security.JAS.Layouts.Main;
 
 [GenerateTypedNameReferences]
-public sealed partial class JASChargesView : Control
+public sealed partial class JASMainLayout : Control
 {
-    public JASChargesView()
+    public JASMainLayout()
     {
         RobustXamlLoader.Load(this);
     }
