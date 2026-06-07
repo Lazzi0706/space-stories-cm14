@@ -346,43 +346,27 @@ public sealed class SharedXenoConstructionSystem : EntitySystem
             return;
         }
 
-        var tile = _mapSystem.CoordinatesToTile(gridUid, gridComp, coordinates);
-        var targetCenter = _mapSystem.GridTileToLocal(grid, gridComp, tile);
-        Entity<XenoWeedsComponent> adjacent = default;
+        _adjacentNodes.Clear();
         if (existing == null)
         {
-            var foundAdjacent = false;
+            var canSpread = false;
             foreach (var direction in _rmcMap.CardinalDirections)
             {
-                using var nearby = _rmcMap.GetAnchoredEntitiesEnumerator<XenoWeedsComponent>(coordinates, direction);
-                while (nearby.MoveNext(out var nearbyWeeds) &&
-                       TryComp(nearbyWeeds, out XenoWeedsComponent? nearbyWeedsComp))
-                {
-                    foundAdjacent = true;
-                    if (!_xenoWeeds.CanSpreadWeedsBetween(nearbyWeeds.ToCoordinates(), targetCenter))
-                        continue;
+                if (!_rmcMap.HasAnchoredEntityEnumerator(coordinates, out Entity<XenoWeedsComponent> adjacent, direction))
+                    continue;
 
-                    adjacent = (nearbyWeeds, nearbyWeedsComp);
-                    break;
-                }
+                _adjacentNodes.Add(adjacent);
 
-                if (adjacent != default)
-                    break;
+                if (!_xenoWeeds.CanSpreadWeedsPopup(grid, coordinates.Position, xeno, adjacent, false, true))
+                    continue;
+
+                canSpread = true;
+                break;
             }
 
             if (_adjacentNodes.Count == 0)
             {
-                if (foundAdjacent)
-                {
-                    _popup.PopupClient(Loc.GetString("cm-xeno-construction-failed-weeds"),
-                        args.Target,
-                        xeno,
-                        PopupType.SmallCaution);
-
-                    return;
-                }
-
-                _popup.PopupClient("You can only plant weeds if there is a nearby node.",
+                _popup.PopupClient(Loc.GetString("rmc-xeno-weeds-no-nearby-node"),
                     args.Target,
                     xeno,
                     PopupType.MediumCaution);
@@ -399,8 +383,6 @@ public sealed class SharedXenoConstructionSystem : EntitySystem
         }
 
         var toSpawn = existing == null ? args.Expand : args.Source;
-        if (!_xenoWeeds.CanSpreadWeedsPopup(grid, tile, xeno, false, true))
-            return;
 
         if (!_xenoWeeds.CanPlaceWeedsPopup(xeno, grid, coordinates, false, isInQueenEye ? coordinates : (EntityCoordinates?)null))
             return;

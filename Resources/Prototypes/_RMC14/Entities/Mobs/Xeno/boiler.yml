@@ -7,31 +7,15 @@
   - RMCXenoSpeechSounds
   - RMCXenoCommendationReceiver
   - RMCXenoMobCollision
-  id: RMCXenoBoilerBase
+  id: CMXenoBoiler
   name: Boiler
   description: A huge, grotesque xenonid covered in glowing, oozing acid slime.
   components:
-  - type: XenoBaseCaste
   - type: GuideHelp
     guides:
     - RMCGuideRoleBoiler
   - type: Sprite
     sprite: _Stories/Mobs/Xenos/Boiler/boiler.rsi
-    layers:
-    - map: [ "enum.XenoVisualLayers.Base" ]
-      state: alive
-    - map: [ "enum.RMCDamageVisualLayers.Base" ]
-      visible: false
-    - map: [ "enum.XenoInhandVisualLayers.Left" ]
-      visible: false
-    - map: [ "enum.XenoInhandVisualLayers.Right" ]
-      visible: false
-    - map: [ "enum.RMCShieldVisuals.Base" ]
-      sprite: _Stories/Effects/xeno_shields.rsi
-      visible: false
-    - map: [ "enum.XenoAcidAnimationVisualLayers.Base" ]
-      state: spit
-      visible: false
   - type: Fixtures
     fixtures:
       fix1:
@@ -63,8 +47,21 @@
       650: Critical
       750: Dead
   - type: Xeno
+    role: CMXenoBoiler
+    actionIds:
+    - ActionXenoRest
+    - ActionXenoRegurgitate
+    - ActionXenoWatch
+    - ActionXenoTailStabBoiler
+    - ActionXenoAcidStrong
+    - ActionXenoBombard
+    - ActionXenoToggleGasType
+    - ActionXenoSprayAcidBoiler
+    - ActionXenoZoom
+    - ActionXenoAcidShroud
+    - ActionXenoDevolve
     tier: 3
-    hudOffset: 0,0.35
+    hudOffset: -0.15,0.05
     unlockAt: 900 # 15 minutes
   - type: XenoHeavy
   - type: XenoDevolve
@@ -84,6 +81,9 @@
     offsetLength: 3
     speed: 0.8
     doAfter: 0.5
+  - type: XenoBombard
+  - type: XenoAcidShroud
+  - type: XenoGasToggle
   - type: XenoTailStab
     toggle: true
     inject:
@@ -91,6 +91,11 @@
     tailDamage:
       groups:
         Brute: 30
+  - type: XenoSprayAcid
+    acid: XenoAcidSprayStrong
+    barricadeDamage:
+      types:
+        Heat: 5
   - type: MeleeWeapon
     damage:
       groups:
@@ -127,6 +132,7 @@
     autoRot: true
   - type: RMCSize
     size: Big
+  - type: XenoDeathcloud
   - type: NeurotoxinInjector
     neuroPerSecond: 20
     injectInContact: false
@@ -148,7 +154,7 @@
       sprite: /Textures/_RMC14/Interface/map_blips.rsi
       state: boiler
   - type: Flammable
-    damage: # per second, scales with number of fire 'stacks'
+    damage: #per second, scales with number of fire 'stacks'
       types:
         Heat: 3
   - type: XenoToggleChargingKnockback
@@ -184,6 +190,12 @@
       - RMCXenoBoilerSapper
   - type: RMCActionOrder
     id: RMCXenoBoiler
+  - type: XenoAcidAnimation
+    actionIds:
+    - ActionXenoAcidStrong
+    - ActionXenoBombard
+    - ActionXenoSprayAcidBoiler
+    - ActionXenoAcidShroud
 
     # Sapper strain
 - type: entity
@@ -192,7 +204,7 @@
   suffix: Sapper
   components:
   - type: Sprite
-    sprite: _RMC14/Mobs/Xenonids/Boiler/boiler_sapper.rsi
+    sprite: _Stories/Mobs/Xenos/Boiler/trapper_boiler.rsi
   - type: Xeno
     actionIds:
     - ActionXenoRest
@@ -237,7 +249,11 @@
   - type: XenoDeployTraps
   - type: XenoInsight
   - type: XenoAdrenalineSurge
+  - type: XenoAcidAnimation
+    actionIds:
+    - ActionXenoAcidStrong
+    - ActionXenoAcidMine
+    - ActionXenoAcidShotgun
+    - ActionXenoDeployTraps
   - type: RMCActionOrder
     id: RMCXenoBoilerSapper
-
-

@@ -2,10 +2,10 @@ using System.Numerics;
 using Robust.Shared.GameStates;
 using Robust.Shared.Utility;
 
-namespace Content.Shared._RMC14.Spawning;
+namespace Content.Shared._RMC14.Evacuation;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedGridSpawnerSystem))]
+[Access(typeof(SharedEvacuationSystem))]
 public sealed partial class GridSpawnerComponent : Component
 {
     [DataField(required: true), AutoNetworkedField]

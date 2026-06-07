@@ -11,6 +11,7 @@ using Content.Shared.Atmos;
 using Content.Shared.Coordinates;
 using Content.Shared.Damage;
 using Content.Shared.Maps;
+using Content.Shared.Physics;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;

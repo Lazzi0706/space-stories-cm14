@@ -1,4 +1,4 @@
 ent-RMCXenoBoilerBase = Бойлер
     .desc = Огромный, гротескный ксеноморф, покрытый светящейся, сочащейся кислотой слизью.
-ent-CMXenoBoiler = { ent-RMCXenoBoilerBase }
+ent-RMCXenoBoiler = { ent-RMCXenoBoilerBase }
     .desc = { ent-RMCXenoBoilerBase.desc }

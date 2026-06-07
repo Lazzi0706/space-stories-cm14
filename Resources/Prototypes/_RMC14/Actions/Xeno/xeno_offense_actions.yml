@@ -140,6 +140,8 @@
     event: !type:XenoTailStabEvent
   - type: XenoTailStabAction
   - type: RMCDazeableAction
+  - type: ActionInRangeUnobstructed
+    range: 2.5
 
 - type: entity
   id: ActionXenoTailSlam
@@ -378,26 +380,6 @@
       state: acid_shotgun
 
 - type: entity
-  id: ActionXenoAcidShotgun
-  parent: ActionXenoBase
-  name: Acid shotgun (60) # TODO RMC14 proper plasma costs
-  description: Launch a scatter shot of small acid blobs that fire damage enemies akin to spitter/praetorian spit. Targets restrained by traps take 75% increased damage.
-  components:
-  - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Stories/Actions/xeno_actions.rsi
-      state: acid_shotgun
-    useDelay: 13
-  - type: TargetAction
-    range: 15
-    checkCanAccess: false
-  - type: EntityTargetAction
-  - type: WorldTargetAction
-    event: !type:XenoScatteredSpitActionEvent
-  - type: ActionBlockIfResting
-
-- type: entity
   id: ActionXenoSpit
   parent: ActionXenoBase
   name: Xeno Spit (25) # TODO RMC14 proper plasma costs
@@ -473,7 +455,6 @@
     useDelay: 8
   - type: TargetAction
     range: 15
-    checkCanAccess: false
   - type: WorldTargetAction
     event: !type:XenoSprayAcidActionEvent
   - type: ActionBlockIfResting
@@ -600,7 +581,6 @@
     useDelay: 12
   - type: TargetAction
     range: 15
-    checkCanAccess: false
   - type: EntityTargetAction
   - type: WorldTargetAction
     event: !type:XenoBoneChipsActionEvent
@@ -935,8 +915,8 @@
   id: RMCGuidebookActionXenoTremor
   categories: [ HideSpawnMenu ]
   components:
-    - type: Sprite
-      state: stomp
+  - type: Sprite
+    state: stomp
 
 - type: entity
   parent: ActionXenoBase
@@ -1318,46 +1298,6 @@
 
 - type: entity
   parent: ActionXenoBase
-  id: ActionXenoDeployTraps
-  name: Deploy Traps (60)
-  description: Deploys a line of temporary resin traps that, when an enemy walks over, stuns them momentarily.
-  components:
-  - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Stories/Actions/xeno_actions.rsi
-      state: resin_pit
-    useDelay: 20
-  - type: TargetAction
-    range: 13
-  - type: WorldTargetAction
-    event: !type:RMCXenoDeployTrapsActionEvent
-  - type: ActionBlockIfResting
-  - type: XenoActionPlasma
-    cost: 60
-
-- type: entity
-  parent: ActionXenoBase
-  id: ActionXenoDeployAcidMine
-  name: Acid Mine (40)
-  description: Designate a tile in which a 3x3 acid mine will erupt. If anyone is in the 3x3 ranged acid mine, they'll be hit with acid.
-  components:
-  - type: Action
-    itemIconStyle: NoItem
-    icon:
-      sprite: _Stories/Actions/xeno_actions.rsi
-      state: acid_mine
-    useDelay: 6
-  - type: TargetAction
-    range: 13
-  - type: WorldTargetAction
-    event: !type:RMCXenoDeployAcidMineEvent
-  - type: ActionBlockIfResting
-  - type: XenoActionPlasma
-    cost: 40
-
-- type: entity
-  parent: ActionXenoBase
   id: ActionXenoTailJab
   name: Tail Jab
   description: Jab an enemy in a 2.5 tile range, doing high damage and slowing them.
@@ -1595,12 +1535,12 @@
   - type: Action
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: acid_mine
     useDelay: 5.5
   - type: XenoAcidMine
     actionIconEmpowered:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: acid_mine_empowered
   - type: TargetAction
     deselectOnMiss: false
@@ -1628,7 +1568,7 @@
   - type: Action
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
+      sprite: _Stories/Actions/xeno_actions.rsi
       state: acid_shotgun
     useDelay: 13
   - type: TargetAction
@@ -1650,12 +1590,12 @@
     useDelay: 20.5
     itemIconStyle: NoItem
     icon:
-      sprite: _RMC14/Actions/xeno_actions.rsi
-      state: gas_mine
+      sprite: _Stories/Actions/xeno_actions.rsi
+      state: resin_pit
   - type: XenoDeployTraps
     actionIconEmpowered:
-      sprite: _RMC14/Actions/xeno_actions.rsi
-      state: gas_mine_empowered
+      sprite: _Stories/Actions/xeno_actions.rsi
+      state: resin_pit
   - type: TargetAction
     checkCanAccess: false
     deselectOnMiss: false
@@ -1672,4 +1612,4 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    state: gas_mine
+    state: resin_pit

@@ -1,6 +1,7 @@
 using System.Numerics;
 using Content.Client._RMC14.Sprite;
 using Content.Shared._RMC14.Sprite;
+using Content.Shared._RMC14.ParaDrop;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
@@ -15,7 +16,6 @@ public sealed partial class ParaDropSystem : SharedParaDropSystem
     [Dependency] private readonly RMCSpriteSystem _rmcSprite = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
 
     private const string DroppingAnimationKey = "dropping-animation";
     private const string SkyFallingAnimationKey = "sky-falling-animation";
@@ -124,8 +124,10 @@ public sealed partial class ParaDropSystem : SharedParaDropSystem
         if (TerminatingOrDeleted(ent))
             return;
 
-        if (TryComp(ent, out AnimationPlayerComponent? animation))
-            _animPlayer.Stop((ent, animation), DroppingAnimationKey);
+        if (!TryComp(ent, out AnimationPlayerComponent? animation))
+            return;
+
+        _animPlayer.Stop((ent, animation), DroppingAnimationKey);
 
         if (!TryComp(ent, out SpriteComponent? sprite))
             return;
@@ -162,12 +164,8 @@ public sealed partial class ParaDropSystem : SharedParaDropSystem
         if (timeRemaining > 0 && multiplier is > 0 and < 1)
         {
             var offset = new Vector2();
-
-            if (EntityManager.TryGetComponent(fallingUid, out CrashLandableComponent? crashLandable))
-                offset = crashLandable.OriginalSpriteOffset;
-            else if (paraDroppable != null)
-                offset = paraDroppable.OriginalSpriteOffset;
-
+            if (EntityManager.TryGetComponent(fallingUid, out SpriteComponent? sprite))
+                offset = sprite.Offset;
             _animPlayer.Play(fallingUid, ReturnFallAnimation(adjustedDuration, adjustedHeight, offset), animationKey);
             if (paraDroppable != null)
                 SpawnParachute(adjustedDuration, _transform.GetMoverCoordinates(fallingUid), paraDroppable, multiplier, offset);

@@ -321,10 +321,10 @@ public sealed class XenoEvolutionSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var buiState = new XenoEvolveBuiState(LackingOvipositor());
         var xenos = EntityQueryEnumerator<ActorComponent, XenoEvolutionComponent>();
         while (xenos.MoveNext(out var uid, out _, out _))
         {
+            var buiState = new XenoEvolveBuiState(LackingOvipositor(uid));
             _ui.SetUiState(uid, XenoEvolutionUIKey.Key, buiState);
         }
     }
@@ -334,7 +334,6 @@ public sealed class XenoEvolutionSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var buiState = new XenoEvolveBuiState(LackingOvipositor());
         var xenos = EntityQueryEnumerator<XenoEvolutionComponent>();
         while (xenos.MoveNext(out var uid, out var comp))
         {
@@ -345,7 +344,10 @@ public sealed class XenoEvolutionSystem : EntitySystem
             }
 
             if (HasComp<ActorComponent>(uid))
+            {
+                var buiState = new XenoEvolveBuiState(LackingOvipositor(uid));
                 _ui.SetUiState(uid, XenoEvolutionUIKey.Key, buiState);
+            }
         }
     }
 
@@ -354,12 +356,14 @@ public sealed class XenoEvolutionSystem : EntitySystem
         if (_net.IsClient)
             return;
 
-        var buiState = new XenoEvolveBuiState(LackingOvipositor());
         var xenos = EntityQueryEnumerator<ActorComponent, XenoEvolutionComponent, HiveMemberComponent>();
         while (xenos.MoveNext(out var uid, out _, out _, out var member))
         {
             if (member.Hive == ent.Owner)
+            {
+                var buiState = new XenoEvolveBuiState(LackingOvipositor(uid));
                 _ui.SetUiState(uid, XenoEvolutionUIKey.Key, buiState);
+            }
         }
     }
 
@@ -637,7 +641,7 @@ public sealed class XenoEvolutionSystem : EntitySystem
                     existing++;
             }
 
-            if (total != 0 && existing / (float) total >= limit && (!slotCount.ContainsKey(newXeno) || slotCount[newXeno] <= 0))
+            if (total != 0 && existing / (float)total >= limit && (!slotCount.ContainsKey(newXeno) || slotCount[newXeno] <= 0))
             {
                 if (doPopup)
                 {
@@ -806,6 +810,11 @@ public sealed class XenoEvolutionSystem : EntitySystem
     public bool LackingOvipositor()
     {
         return NeedsOvipositor() && !HasOvipositor();
+    }
+
+    public bool LackingOvipositor(EntityUid hiveMember)
+    {
+        return NeedsOvipositor() && !HasOvipositor(hiveMember);
     }
 
     private bool MarinesHaveLanded()
