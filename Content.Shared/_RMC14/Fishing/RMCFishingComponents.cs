@@ -180,9 +180,3 @@ public enum RMCFishVisuals : byte
 {
     Gutted,
 }
-
-[Serializable, NetSerializable]
-public enum ScaleVisuals : byte
-{
-    Scale,
-}
