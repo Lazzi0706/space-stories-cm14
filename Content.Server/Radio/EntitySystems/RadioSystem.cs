@@ -251,6 +251,7 @@ public sealed class RadioSystem : EntitySystem
             var hasActiveServer = HasActiveServer(sourceMapId, channel.ID);
             var sourceServerExempt = _exemptQuery.HasComp(radioSource);
 
+            var ttsRecipients = new HashSet<ICommonSession>();
             var radioQuery = EntityQueryEnumerator<ActiveRadioComponent, TransformComponent>();
             while (canSend && radioQuery.MoveNext(out var receiver, out var radio, out var transform))
             {
@@ -325,6 +326,24 @@ public sealed class RadioSystem : EntitySystem
                 var ev = new RadioReceiveEvent(actualMessage, messageSource, channel, radioSource, chatMsg, currentLanguage);
                 // RMC14
                 RaiseLocalEvent(receiver, ref ev);
+
+                var target = receiver;
+                if (!HasComp<ActorComponent>(target))
+                {
+                    var parent = Transform(receiver).ParentUid;
+                    if (HasComp<ActorComponent>(parent))
+                        target = parent;
+                }
+
+                if (TryComp<ActorComponent>(target, out var actor) && actor.PlayerSession.Status == SessionStatus.InGame)
+                {
+                    ttsRecipients.Add(actor.PlayerSession);
+                }
+            }
+
+            if (canSend && ttsRecipients.Count > 0)
+            {
+                ProcessAndSendRadioTts(messageSource, message, channel, ttsRecipients);
             }
 
             if (canSend &&
